@@ -2,7 +2,7 @@ import os
 import re
 import requests
 
-def find_m3u8_links(url):
+def find_m3u8_links(url):https://www.canlitv.my/showtv
     # Saytdan məzmunu çək
     response = requests.get(url)
     if response.status_code != 200:
