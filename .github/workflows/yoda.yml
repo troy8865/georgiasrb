@@ -1,12 +1,9 @@
 name: Run Python Script
 
 on:
-  push:
-    branches:
-      - main  # main branch-ə push edildikdə işə düşür
-  pull_request:
-    branches:
-      - main  # main branch-ə pull request edildikdə işə düşür
+  schedule:
+    - cron: "0 * * * *"  # Hər saatda bir işlə (cron sintaksisi)
+  workflow_dispatch:  # Manual olaraq işə salmaq üçün
 
 jobs:
   run-script:
