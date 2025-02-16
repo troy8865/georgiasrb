@@ -1,6 +1,5 @@
 import os
 import requests
-from urllib.parse import urljoin
 
 # Qaynaq link
 source_url = "http://player.smotrim.ru/iframe/stream/live_id/efab3cbe-a29c-45f0-9596-5cb4f1ce7fbe.m3u8"
@@ -22,8 +21,8 @@ def extract_m3u8(url):
         # Faylı oxu və içindəki nisbi linkləri tam URL-yə çevir
         m3u8_content = response.text
         
-        # Əsas URL-ni https:// formasında düzəldirik
-        base_url = "https://" + "/".join(url.split("/")[2:-1]) + "/"
+        # Mənbə linkinin əsas hissəsini alırıq
+        base_url = "https://player.smotrim.ru/iframe/stream/live_id/efab3cbe-a29c-45f0-9596-5cb4f1ce7fbe.m3u8"
         
         # Nisbi linkləri tam linklərlə əvəz edirik
         modified_content = ""
@@ -32,7 +31,8 @@ def extract_m3u8(url):
                 # # işarəsi olan sətirləri olduğu kimi saxlayırıq
                 modified_content += line + "\n"
             elif line.strip():  # Boş olmayan sətirlər
-                full_url = urljoin(base_url, line)  # Nisbi linki tam linkə çevir
+                # Linkin sonuna ?md5=... hissəsini əlavə edirik
+                full_url = f"{base_url}?{line.split('?')[1]}" if '?' in line else base_url
                 modified_content += full_url + "\n"
         
         # Faylı qovluğa yaz (üzərinə yaz)
