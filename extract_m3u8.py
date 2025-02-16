@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "linkiyaz",
+    "http://149.255.152.218/channels.aspx?channel=aztv.m3u8",
     "https://str.yodacdn.net/atv/index.m3u8",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
