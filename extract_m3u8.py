@@ -16,10 +16,6 @@ def extract_m3u8(url):
         response = requests.get(url)
         response.raise_for_status()  # Xəta yoxlanışı
 
-        # Fayl adını yarat (cari tarix və vaxt ilə)
-        filename = datetime.now().strftime("%Y-%m-%d_%H-%M-%S.m3u8")
-        file_path = os.path.join(output_folder, filename)
-
         # Faylı qovluğa yaz
         with open(file_path, "wb") as file:
             file.write(response.content)
