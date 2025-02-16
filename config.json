@@ -1,0 +1,214 @@
+{
+  "siteName": "Yoda TV",
+  "siteUrl": "https://yoda.az",
+  "channels": [
+    {
+      "channelID": "aztv",
+      "channelName": "AZTV",
+      "channelSource": "https://str.yodacdn.net/aztv/video.m3u8",
+      "channelProgramme": "https://azepg.ddns.net/aztv/15_days_archive__aztv_desc.xml",
+      "channelIconC": "/logos/aztv.svg",
+      "channelIconM": "/logos/aztv.svg"
+    },
+    {
+      "channelID": "ictimai",
+      "channelName": "İctimai",
+      "channelSource": "https://str.yodacdn.net/ictimaitv/video.m3u8",
+      "channelProgramme": "https://azepg.ddns.net/aztv/15_days_archive__itv_desc.xml",
+      "channelIconC": "/logos/itv.png",
+      "channelIconM": "/logos/itv.png"
+    },
+    {
+      "channelID": "bakutv",
+      "channelName": "Baku TV",
+      "channelSource": "https://str.yodacdn.net/bakutv/video.m3u8",
+      "channelIconC": "/logos/bakutv.webp",
+      "channelIconM": "/logos/bakutv.webp"
+    },
+    {
+      "channelID": "idman",
+      "channelName": "İdman TV",
+      "channelSource": "https://str.yodacdn.net/idman/video.m3u8",
+      "channelProgramme": "https://azepg.ddns.net/aztv/15_days_archive__idman_desc.xml",
+      "channelIconC": "/logos/idman.svg",
+      "channelIconM": "/logos/idman.svg"
+    },
+    {
+      "channelID": "ntv",
+      "channelName": "Naxçıvan TV",
+      "channelSource": "https://str1.yodacdn.net/ntv/video.m3u8",
+      "channelProgramme": "https://azepg.ddns.net/aztv/15_days_archive__nxtv_desc.xml",
+      "channelIconC": "/logos/ntv.png",
+      "channelIconM": "/logos/ntv.png"
+    },
+    {
+      "channelID": "atv",
+      "channelName": "ATV",
+      "channelSource": "https://str.yodacdn.net/atv/video.m3u8",
+      "channelProgramme": "https://azepg.ddns.net/aztv/15_days_archive__atv_desc.xml",
+      "channelIconC": "/logos/atv.svg",
+      "channelIconM": "/logos/atv.svg"
+    },
+    {
+      "channelID": "real",
+      "channelName": "Real TV",
+      "channelSource": "https://str.yodacdn.net/real/video.m3u8",
+      "channelIconC": "/logos/real.svg",
+      "channelIconM": "/logos/real.svg"
+    },
+    {
+      "channelID": "qafkaz",
+      "channelName": "Qafqaz TV",
+      "channelSource": "https://str.yodacdn.net/qafkaz/video.m3u8",
+      "channelProgramme": "https://azepg.ddns.net/aztv/15_days_archive__qafkaz_desc.xml",
+      "channelIconC": "/logos/qafqaz.svg",
+      "channelIconM": "/logos/qafqaz.svg"
+    },
+    {
+      "channelID": "xazar",
+      "channelName": "XƏZƏR",
+      "channelSource": "https://str.yodacdn.net/xazar/video.m3u8",
+      "channelProgramme": "https://azepg.ddns.net/aztv/15_days_archive__xezer_desc.xml",
+      "channelIconC": "/logos/xazar.png",
+      "channelIconM": "/logos/xazar.png"
+    },
+    {
+      "channelID": "arb24",
+      "channelName": "ARB24",
+      "channelSource": "https://str.yodacdn.net/arb24/video.m3u8",
+      "channelIconC": "/logos/arb24.svg",
+      "channelIconM": "/logos/arb24.svg"
+    },
+    {
+      "channelID": "apatv",
+      "channelName": "APA TV",
+      "channelSource": "https://str.yodacdn.net/apatv/video.m3u8",
+      "channelIconC": "/logos/apatv.png",
+      "channelIconM": "/logos/apatv.png"
+    },
+    {
+      "channelID": "haberglobal",
+      "channelName": "Haber Global",
+      "channelSource": "https://str.yodacdn.net/haberglobal/video.m3u8",
+      "channelIconC": "/logos/haber.png",
+      "channelIconM": "/logos/haber.png"
+    },
+    {
+      "channelID": "tmbtr",
+      "channelName": "TMB TV",
+      "channelSource": "https://str.yodacdn.net/tmbtr/video.m3u8",
+      "channelIconC": "/logos/tmb.png",
+      "channelIconM": "/logos/tmb.png"
+    },
+    {
+      "channelID": "tmbaz",
+      "channelName": "TMB Azərbaycan",
+      "channelSource": "https://str.yodacdn.net/tmbaz/video.m3u8",
+      "channelIconC": "/logos/tmb.png",
+      "channelIconM": "/logos/tmb.png"
+    },
+    {
+      "channelID": "arb",
+      "channelName": "ARB",
+      "channelSource": "https://str.yodacdn.net/arb/video.m3u8",
+      "channelProgramme": "https://azepg.ddns.net/aztv/15_days_archive__arb_desc.xml",
+      "channelIconC": "/logos/arb.svg",
+      "channelIconM": "/logos/arb.svg"
+    },
+    {
+      "channelID": "start",
+      "channelName": "Kanal S",
+      "channelSource": "https://str.yodacdn.net/start/video.m3u8",
+      "channelIconC": "/logos/start.png",
+      "channelIconM": "/logos/start.png"
+    },
+    {
+      "channelID": "kanal35",
+      "channelName": "Kanal 35",
+      "channelSource": "https://str.yodacdn.net/kanal35/index.m3u8",
+      "channelIconC": "/logos/kanal35.png",
+      "channelIconM": "/logos/kanal35.png"
+    },
+    {
+      "channelID": "eltv",
+      "channelName": "ELTV",
+      "channelSource": "https://str.yodacdn.net/eltv/video.m3u8",
+      "channelProgramme": "https://azepg.ddns.net/aztv/15_days_archive__eltv_desc.xml",
+      "channelIconC": "/logos/eltv_logo.png",
+      "channelIconM": "/logos/eltv_logo.png"
+    },
+    {
+      "channelID": "arbgunesh",
+      "channelName": "ARB GÜNƏŞ",
+      "channelSource": "https://str.yodacdn.net/arbgunesh/video.m3u8",
+      "channelProgramme": "https://azepg.ddns.net/aztv/15_days_archive__gunesh_desc.xml",
+      "channelIconC": "/logos/gunesh.svg",
+      "channelIconM": "/logos/gunesh.svg"
+    },
+    {
+      "channelID": "cbc",
+      "channelName": "CBC",
+      "channelSource": "https://str1.yodacdn.net/cbc/video.m3u8",
+      "channelIconC": "/logos/cbc.svg",
+      "channelIconM": "/logos/cbc.svg"
+    },
+    {
+      "channelID": "medeniyyet",
+      "channelName": "Mədəniyyət",
+      "channelSource": "https://str.yodacdn.net/medeniyyet/video.m3u8",
+      "channelProgramme": "https://azepg.ddns.net/aztv/15_days_archive__madaniyyet_desc.xml",
+      "channelIconC": "/logos/medeniyyet.svg",
+      "channelIconM": "/logos/medeniyyet.svg"
+    },
+    {
+      "channelID": "space",
+      "channelName": "Space",
+      "channelSource": "https://str.yodacdn.net/space/video.m3u8",
+      "channelProgramme": "https://azepg.ddns.net/aztv/15_days_archive__space_desc.xml",
+      "channelIconC": "/logos/space.png",
+      "channelIconM": "/logos/space.png"
+    },
+    {
+      "channelID": "tmb",
+      "channelName": "Vostok TV",
+      "channelSource": "https://str.yodacdn.net/tmb/video.m3u8",
+      "channelIconC": "/logos/vostok.png",
+      "channelIconM": "/logos/vostok.png"
+    },
+    {
+      "channelID": "agrotv",
+      "channelName": "AGRO TV",
+      "channelSource": "https://str.yodacdn.net/agrotv/video.m3u8",
+      "channelIconC": "/logos/agrotv.png",
+      "channelIconM": "/logos/agrotv.png"
+    },
+    {
+      "channelID": "showplus",
+      "channelName": "Show Plus TV",
+      "channelSource": "https://str.yodacdn.net/showplus/video.m3u8",
+      "channelIconC": "/logos/showplus.png",
+      "channelIconM": "/logos/showplus.png"
+    },
+    {
+      "channelID": "mtvaz",
+      "channelName": "MTV Azerbaijan",
+      "channelSource": "https://str.yodacdn.net/mtvaz/video.m3u8",
+      "channelIconC": "/logos/mtv.png",
+      "channelIconM": "/logos/mtv.png"
+    },
+    {
+      "channelID": "shtv",
+      "channelName": "SH TV",
+      "channelSource": "https://str.yodacdn.net/shtv/video.m3u8",
+      "channelIconC": "/logos/shtv.png",
+      "channelIconM": "/logos/shtv.png"
+    },
+    {
+      "channelID": "vip",
+      "channelName": "VIP HD",
+      "channelSource": "https://str.yodacdn.net/vip/video.m3u8",
+      "channelIconC": "/logos/viphd.png",
+      "channelIconM": "/logos/viphd.png"
+    }
+  ]
+}
