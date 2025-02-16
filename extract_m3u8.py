@@ -4,7 +4,7 @@ import requests
 # Qaynaq linkləri
 source_urls = [
     "http://player.smotrim.ru/iframe/stream/live_id/efab3cbe-a29c-45f0-9596-5cb4f1ce7fbe.m3u8",
-    "https://due.b7021e57df9f3d9b.click/itis/8c1437d28413db5112720e3ce0579154/playlist.m3u8"
+    "https://youtu.be/TuDtvzk-o6o?si=EMDTVogAWnPCpX_5"
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
