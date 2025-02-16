@@ -2,7 +2,7 @@ import os
 import re
 import requests
 
-def find_m3u8_links(url):https://www.canlitv.my/showtv
+def find_m3u8_links(url):
     # Saytdan məzmunu çək
     response = requests.get(url)
     if response.status_code != 200:
@@ -26,8 +26,8 @@ def save_m3u8_to_file(links, folder):
         print(f'{file_path} faylına yazıldı: {link}')
 
 if __name__ == "__main__":
-    # Saytın URL-i
-    url = "https://www.canlitv.my/showtv"  # Buraya öz linkinizi əlavə edin
+    # Saytın URL-i (buraya öz linkinizi əlavə edin)
+    url = "https://www.canlitv.my/showtv"  # Nümunə olaraq
 
     # M3U8 linklərini tap
     m3u8_links = find_m3u8_links(url)
