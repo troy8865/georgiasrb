@@ -15,12 +15,16 @@ def extract_m3u8(url):
         # m3u8 faylını yüklə
         response = requests.get(url)
         response.raise_for_status()  # Xəta yoxlanışı
-
-        # Faylı qovluğa yaz
+        
+        # Fayl adını sabit saxla
+        filename = "stream.m3u8"
+        file_path = os.path.join(output_folder, filename)
+        
+        # Faylı qovluğa yaz (üzərinə yaz)
         with open(file_path, "wb") as file:
             file.write(response.content)
 
-        print(f"m3u8 faylı uğurla yadda saxlandı: {file_path}")
+        print(f"m3u8 faylı uğurla yeniləndi: {file_path}")
     except Exception as e:
         print(f"Xəta baş verdi: {e}")
 
