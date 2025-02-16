@@ -313,8 +313,8 @@ http://149.255.152.218/                    <b>Час : </b><br />
 http://149.255.152.218/                    <select name="ctl00$body$Hours_ddl" id="body_Hours_ddl">
 http://149.255.152.218/	<option value="00">00</option>
 http://149.255.152.218/	<option value="01">01</option>
-http://149.255.152.218/	<option selected="selected" value="02">02</option>
-http://149.255.152.218/	<option value="03">03</option>
+http://149.255.152.218/	<option value="02">02</option>
+http://149.255.152.218/	<option selected="selected" value="03">03</option>
 http://149.255.152.218/	<option value="04">04</option>
 http://149.255.152.218/	<option value="05">05</option>
 http://149.255.152.218/	<option value="06">06</option>
@@ -341,7 +341,7 @@ http://149.255.152.218/                 <td>
 http://149.255.152.218/                    <b>Минуты : </b><br />
 http://149.255.152.218/                    <select name="ctl00$body$Minutes_ddl" id="body_Minutes_ddl">
 http://149.255.152.218/	<option value="00">00</option>
-http://149.255.152.218/	<option value="01">01</option>
+http://149.255.152.218/	<option selected="selected" value="01">01</option>
 http://149.255.152.218/	<option value="02">02</option>
 http://149.255.152.218/	<option value="03">03</option>
 http://149.255.152.218/	<option value="04">04</option>
@@ -393,7 +393,7 @@ http://149.255.152.218/	<option value="49">49</option>
 http://149.255.152.218/	<option value="50">50</option>
 http://149.255.152.218/	<option value="51">51</option>
 http://149.255.152.218/	<option value="52">52</option>
-http://149.255.152.218/	<option selected="selected" value="53">53</option>
+http://149.255.152.218/	<option value="53">53</option>
 http://149.255.152.218/	<option value="54">54</option>
 http://149.255.152.218/	<option value="55">55</option>
 http://149.255.152.218/	<option value="56">56</option>
@@ -419,7 +419,7 @@ http://149.255.152.218/                <li align"center">
 http://149.255.152.218/                    <div align="center">
 http://149.255.152.218/                    <br />
 http://149.255.152.218/                     <video id="video_player"  class="video-js vjs-default-skin" width="720" height="576" controls>
-http://149.255.152.218/                         <source type="application/x-mpegURL" src="http://149.255.152.199/aztv.m3u8?user=37076&token=b06bdb6961fc26c2ff7134ce1cce3516&e=1739832357&bands=796.6096&sid=coder_53">
+http://149.255.152.218/                         <source type="application/x-mpegURL" src="http://149.255.152.199/aztv.m3u8?user=37076&token=002195f4f23250dbbaf51e67d60046ee&e=1739832838&bands=796.6096&sid=coder_53">
 http://149.255.152.218/                     </video>
 http://149.255.152.218/                    </div>
 http://149.255.152.218/                    <p class="desc">
