@@ -14,17 +14,22 @@ os.makedirs(output_folder, exist_ok=True)
 response = requests.get(url)
 soup = BeautifulSoup(response.text, 'html.parser')
 
-# M3U8 linklərini tap
-m3u8_links = set()
+# Axtarılacaq m3u8 linki
+target_link = 'https://str.yodacdn.net/aztv/index.m3u8'
+
+# Bütün linkləri yoxla
+found_links = []
 for tag in soup.find_all('a', href=True):
     href = tag['href']
-    if re.search(r'\.m3u8$', href):
-        m3u8_links.add(href)
+    if target_link in href:
+        found_links.append(href)
 
-# M3U8 linklərini fayla yaz
-output_file = os.path.join(output_folder, 'm3u8_links.txt')
-with open(output_file, 'w') as f:
-    for link in m3u8_links:
-        f.write(link + '\n')
-
-print(f"{len(m3u8_links)} m3u8 linki tapıldı və {output_file} faylına yazıldı.")
+# Əgər link tapılıbsa, fayla yaz
+if found_links:
+    output_file = os.path.join(output_folder, 'found_m3u8_links.txt')
+    with open(output_file, 'w') as f:
+        for link in found_links:
+            f.write(link + '\n')
+    print(f"Link tapıldı və {output_file} faylına yazıldı.")
+else:
+    print("Heç bir m3u8 linki tapılmadı.")
