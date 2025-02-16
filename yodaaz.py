@@ -1,44 +1,39 @@
-import requests
-from bs4 import BeautifulSoup
-import re
 import os
+import re
+import requests
 
-# Saytın URL-i
-url = 'https://yoda.az/'
-
-# Çıxış qovluğu
-output_folder = 'm3u8_links'
-os.makedirs(output_folder, exist_ok=True)  # Qovluq yaradılır (əgər yoxdursa)
-
-# Saytın məzmununu əldə et
-try:
+def find_m3u8_links(url):
+    # Saytdan məzmunu çək
     response = requests.get(url)
-    response.raise_for_status()  # HTTP xətası yoxlanılır
-except requests.exceptions.RequestException as e:
-    print(f"Sayta giriş zamanı xəta baş verdi: {e}")
-    exit(1)
+    if response.status_code != 200:
+        print("Sayta giriş uğursuz oldu.")
+        return []
 
-soup = BeautifulSoup(response.text, 'html.parser')
+    # M3U8 linklərini tap
+    m3u8_links = re.findall(r'https?://[^\s]+\.m3u8', response.text)
+    return m3u8_links
 
-# Axtarılacaq m3u8 linki
-target_link = 'https://str.yodacdn.net/aztv/index.m3u8'
+def save_m3u8_to_file(links, folder):
+    # Qovluq yarat
+    if not os.path.exists(folder):
+        os.makedirs(folder)
 
-# Bütün linkləri yoxla
-found_links = []
-for tag in soup.find_all('a', href=True):
-    href = tag['href']
-    if target_link in href:
-        found_links.append(href)
+    # Hər bir linki fayl kimi saxla
+    for i, link in enumerate(links):
+        file_path = os.path.join(folder, f'stream_{i+1}.m3u8')
+        with open(file_path, 'w') as f:
+            f.write(link)
+        print(f'{file_path} faylına yazıldı: {link}')
 
-# Əgər link tapılıbsa, fayla yaz
-if found_links:
-    output_file = os.path.join(output_folder, 'found_m3u8_links.txt')
-    try:
-        with open(output_file, 'w') as f:
-            for link in found_links:
-                f.write(link + '\n')
-        print(f"Link tapıldı və {output_file} faylına yazıldı.")
-    except IOError as e:
-        print(f"Fayla yazmaq zamanı xəta baş verdi: {e}")
-else:
-    print("Heç bir m3u8 linki tapılmadı.")
+if __name__ == "__main__":
+    # Saytın URL-i
+    url = "https://www.canlitv.my/showtv"  # Buraya öz linkinizi əlavə edin
+
+    # M3U8 linklərini tap
+    m3u8_links = find_m3u8_links(url)
+
+    if m3u8_links:
+        # M3U8 linklərini fayl kimi saxla
+        save_m3u8_to_file(m3u8_links, 'm3u8_files')
+    else:
+        print("Heç bir M3U8 linki tapılmadı.")
