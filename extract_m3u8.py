@@ -21,7 +21,9 @@ def extract_m3u8(url):
         
         # Faylı oxu və içindəki nisbi linkləri tam URL-yə çevir
         m3u8_content = response.text
-        base_url = "/".join(url.split("/")[:-1]) + "/"  # Əsas URL-ni alırıq
+        
+        # Əsas URL-ni https:// formasında düzəldirik
+        base_url = "https://" + "/".join(url.split("/")[2:-1]) + "/"
         
         # Nisbi linkləri tam linklərlə əvəz edirik
         modified_content = ""
