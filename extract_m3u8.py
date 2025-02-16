@@ -4,7 +4,7 @@ import requests
 # Qaynaq linkləri
 source_urls = [
     "http://player.smotrim.ru/iframe/stream/live_id/efab3cbe-a29c-45f0-9596-5cb4f1ce7fbe.m3u8",
-    "https://yoda.az"
+    "https://str.yodacdn.net/atv/video.m3u8"
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
