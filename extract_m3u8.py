@@ -25,20 +25,25 @@ def extract_m3u8(url, index):
         # Faylı oxu və içindəki nisbi linkləri tam URL-yə çevir
         m3u8_content = response.text.splitlines()
         
+        # Debug: Qaynaq faylının məzmununu çap et
+        print("Qaynaq faylının məzmunu:")
+        print(m3u8_content)
+        
         # Multi-variant m3u8 faylı üçün əsas strukturu yaradırıq
         modified_content = "#EXTM3U\n#EXT-X-VERSION:3\n"
         
         # Qaynaq linkdən token-i çıxarırıq
+        token_part = ""
         if "token=" in url:
-            token_part = url.split("token=")[-1]  # token= sonrası hissə
-        else:
-            token_part = ""  # Əgər token yoxdursa, boş qoy
+            try:
+                token_part = url.split("token=")[1].split("&")[0]  # token= sonrası ilk parametri götür
+            except IndexError:
+                token_part = ""  # Xəta olduqda boş qoy
         
         # İçindəki linkləri işləyib, onların önünə əsas URL əlavə edirik
         for line in m3u8_content:
-            if line.startswith("http") or line.endswith(".m3u8"):
-                # Linki tam URL-yə çevir
-                full_url = f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/{line}?remote=no_check_ip&token={token_part}"
+            if line.strip() and not line.startswith("#"):  # Tərkibdə "#" olmayan sətirləri seç
+                full_url = f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/{line.strip()}?remote=no_check_ip&token={token_part}"
                 # Multi-variant m3u8 formatına uyğun olaraq yazırıq
                 modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{full_url}\n"
         
