@@ -12,16 +12,7 @@ def find_m3u8_links(url):
     # M3U8 linklərini tap
     m3u8_links = re.findall(r'https?://[^\s]+\.m3u8', response.text)
     return m3u8_links
-# Faylın yadda saxlanacağı qovluq
-output_folder = "output"
-os.makedirs(output_folder, exist_ok=True)
 
-# m3u8 faylını çıxar və qovluğa yadda saxla
-def extract_m3u8(url, index):
-    try:
-        # m3u8 faylını yüklə
-        response = requests.get(url)
-        response.raise_for_status()  # Xəta yoxlanışı
 def save_m3u8_to_file(links, folder):
     # Qovluq yarat
     if not os.path.exists(folder):
@@ -34,6 +25,9 @@ def save_m3u8_to_file(links, folder):
             f.write(link)
         print(f'{file_path} faylına yazıldı: {link}')
 
+    # Qovluğun yolunu qaytar
+    return os.path.abspath(folder)
+
 if __name__ == "__main__":
     # Saytın URL-i (buraya öz linkinizi əlavə edin)
     url = "https://www.canlitv.my/showtv"  # Nümunə olaraq
@@ -42,7 +36,8 @@ if __name__ == "__main__":
     m3u8_links = find_m3u8_links(url)
 
     if m3u8_links:
-        # M3U8 linklərini fayl kimi saxla
-        save_m3u8_to_file(m3u8_links, 'm3u8_files')
+        # M3U8 linklərini fayl kimi saxla və qovluğun yolunu al
+        output_folder = save_m3u8_to_file(m3u8_links, 'm3u8_files')
+        print(f"M3U8 faylları bu qovluqda saxlanıldı: {output_folder}")
     else:
         print("Heç bir M3U8 linki tapılmadı.")
