@@ -36,7 +36,7 @@ def extract_m3u8(url, index):
                 # Əgər link nisbidirsə, onun önünə əlavə edirik
                 if not line.startswith("http"):
                     # Nisbi linki tam linkə çeviririk
-                    full_url = f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?{line}"
+                    full_url = f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/{line}"
                 else:
                     # Əgər link tam URL-dirsə, onu olduğu kimi saxlayırıq
                     full_url = line
