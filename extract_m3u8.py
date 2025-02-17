@@ -26,21 +26,19 @@ def extract_m3u8(url, index):
         # Faylı oxu və içindəki nisbi linkləri tam URL-yə çevir
         m3u8_content = response.text
         
-        # Nisbi linkləri tam linklərlə əvəz edirik
-        modified_content = ""
-        for line in m3u8_content.splitlines():
-            if line.startswith("#"):
-                # # işarəsi olan sətirləri olduğu kimi saxlayırıq
-                modified_content += line + "\n"
-            elif line.strip():  # Boş olmayan sətirlər
-                # Əgər link nisbidirsə, onun önünə əlavə edirik
-                if not line.startswith("http"):
-                    # Nisbi linki tam linkə çeviririk
-                    full_url = f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/{line}"
-                else:
-                    # Əgər link tam URL-dirsə, onu olduğu kimi saxlayırıq
-                    full_url = line
-                modified_content += full_url + "\n"
+        # Multi-variant m3u8 faylı üçün əsas strukturu yaradırıq
+        modified_content = "#EXTM3U\n#EXT-X-VERSION:3\n"
+        
+        # Müxtəlif keyfiyyət seçimləri üçün linklər əlavə edirik
+        variants = [
+            {"bandwidth": 800000, "resolution": "640x360", "suffix": "a"},
+            {"bandwidth": 1200000, "resolution": "854x480", "suffix": "b"},
+            {"bandwidth": 2000000, "resolution": "1280x720", "suffix": "c"},
+        ]
+        
+        for variant in variants:
+            modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH={variant['bandwidth']},RESOLUTION={variant['resolution']}\n"
+            modified_content += f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?tracks-v1{variant['suffix']}/index.fmp4.m3u8?remote=no_check_ip&token=1e0284b979ceb30bb9d1ef408e4dd8c8e362005a-38dc65c08c7ad97411942c76c9a12762-1739825087-1739814287\n"
         
         # Faylı qovluğa yaz (üzərinə yaz)
         with open(file_path, "w", encoding="utf-8") as file:
