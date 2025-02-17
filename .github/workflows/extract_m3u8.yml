@@ -1,32 +1,35 @@
-name: Extract and Push m3u8
+name: Extract and Push m3u8 (Manual Trigger)
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:  # Yalnız manual olaraq işə düşür
 
 jobs:
   extract-m3u8:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Ubuntu ən son versiyasında işləsin
 
     steps:
+      # 1. Repository-ni checkout et
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2. Python quraşdır
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.9'  # Python 3.9 istifadə et
 
+      # 3. Tələb olunan paketləri quraşdır
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests
 
+      # 4. Python skriptini işə sal
       - name: Run Python script
         run: |
           python extract_m3u8.py
 
+      # 5. Dəyişiklikləri yoxla
       - name: Check for changes
         id: changes
         run: |
@@ -36,6 +39,7 @@ jobs:
             echo "changes_detected=false" >> $GITHUB_OUTPUT
           fi
 
+      # 6. Dəyişikliklər varsa, commit et və push et
       - name: Commit and push changes
         if: steps.changes.outputs.changes_detected == 'true'
         run: |
