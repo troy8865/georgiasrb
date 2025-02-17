@@ -3,7 +3,6 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "",
     "http://raalbatros.serv00.net/Freeshot.php?ID=bein-sports-1-turkey/158",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
@@ -24,17 +23,10 @@ def extract_m3u8(url, index):
         file_path = os.path.join(output_folder, filename)
         
         # Faylı oxu və içindəki nisbi linkləri tam URL-yə çevir
-        m3u8_content = response.text
+        m3u8_content = response.text.splitlines()
         
         # Multi-variant m3u8 faylı üçün əsas strukturu yaradırıq
         modified_content = "#EXTM3U\n#EXT-X-VERSION:3\n"
-        
-        # Müxtəlif keyfiyyət seçimləri üçün linklər əlavə edirik
-        variants = [
-            {"bandwidth": 800000, "resolution": "640x360", "suffix": "a1"},
-            {"bandwidth": 1200000, "resolution": "854x480", "suffix": "a1"},
-            {"bandwidth": 2000000, "resolution": "1280x720", "suffix": "a1"},
-        ]
         
         # Qaynaq linkdən token-i çıxarırıq
         if "token=" in url:
@@ -42,9 +34,13 @@ def extract_m3u8(url, index):
         else:
             token_part = ""  # Əgər token yoxdursa, boş qoy
         
-        for variant in variants:
-            modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH={variant['bandwidth']},RESOLUTION={variant['resolution']}\n"
-            modified_content += f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/tracks-v1{variant['suffix']}/index.fmp4.m3u8?remote=no_check_ip&token={token_part}\n"
+        # İçindəki linkləri işləyib, onların önünə əsas URL əlavə edirik
+        for line in m3u8_content:
+            if line.startswith("http") or line.endswith(".m3u8"):
+                # Linki tam URL-yə çevir
+                full_url = f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/{line}?remote=no_check_ip&token={token_part}"
+                # Multi-variant m3u8 formatına uyğun olaraq yazırıq
+                modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{full_url}\n"
         
         # Faylı qovluğa yaz (üzərinə yaz)
         with open(file_path, "w", encoding="utf-8") as file:
