@@ -36,12 +36,15 @@ def extract_m3u8(url, index):
             {"bandwidth": 2000000, "resolution": "1280x720", "suffix": "a1"},
         ]
         
-        # Qaynaq linkdən token-i çıxarırıq
-        token = url.split("token=")[-1] if "token=" in url else ""
+        # Qaynaq linkdən token-i və ondan sonra gələn hissəni çıxarırıq
+        if "token=" in url:
+            token_part = url.split("token=")[-1]  # token= sonrası hissə
+        else:
+            token_part = ""  # Əgər token yoxdursa, boş qoy
         
         for variant in variants:
             modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH={variant['bandwidth']},RESOLUTION={variant['resolution']}\n"
-            modified_content += f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?{variant['suffix']}&token={token}\n"
+            modified_content += f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/tracks-v1{variant['suffix']}/index.fmp4.m3u8?remote=no_check_ip&token={token_part}\n"
         
         # Faylı qovluğa yaz (üzərinə yaz)
         with open(file_path, "w", encoding="utf-8") as file:
