@@ -1,4 +1,4 @@
 #EXTM3U
-#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",NAME="undefined a1",DEFAULT=YES,URI="tracks-a1/index.fmp4.m3u8?remote=no_check_ip&token=ba23cf60a175ab780a20faed0c7df5585050f77e-baf5614d56efab4376fcae6ac6866449-1739829193-1739818393"
-#EXT-X-STREAM-INF:AVERAGE-BANDWIDTH=2310000,BANDWIDTH=2890000,AUDIO="aac",RESOLUTION=1280x720,FRAME-RATE=25.000,CODECS="avc1.64001f,mp4a.40.2",CLOSED-CAPTIONS=NONE
-http://raalbatros.serv00.net/Freeshot.php?ID=bein-sports-1-turkey/tracks-v1/index.fmp4.m3u8?remote=no_check_ip&token=ba23cf60a175ab780a20faed0c7df5585050f77e-baf5614d56efab4376fcae6ac6866449-1739829193-1739818393
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="aac",NAME="undefined a1",DEFAULT=YES,URI="tracks-a1/index.fmp4.m3u8?remote=no_check_ip&token=4af417f0e151ede91a3b61748898e56921872bbf-0101b674bad78ebcc7155885d4468538-1739829296-1739818496"
+#EXT-X-STREAM-INF:AVERAGE-BANDWIDTH=2320000,BANDWIDTH=2910000,AUDIO="aac",RESOLUTION=1280x720,FRAME-RATE=25.000,CODECS="avc1.64001f,mp4a.40.2",CLOSED-CAPTIONS=NONE
+https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?http://raalbatros.serv00.net/Freeshot.php?ID=bein-sports-1-turkey/tracks-v1/index.fmp4.m3u8?remote=no_check_ip&token=4af417f0e151ede91a3b61748898e56921872bbf-0101b674bad78ebcc7155885d4468538-1739829296-1739818496
