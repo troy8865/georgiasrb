@@ -37,12 +37,7 @@ def extract_m3u8(url, index):
                 modified_content += line + "\n"
             elif line.strip():  # Boş olmayan sətirlər
                 # Linkin sonuna ?md5=... hissəsini əlavə edirik
-                if not line.startswith("http"):
-                    # Əgər link nisbidirsə, onun önünə əlavə edirik
-                    full_url = f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?{base_url}/{line}"
-                else:
-                    # Əgər link tam URL-dirsə, onu olduğu kimi saxlayırıq
-                    full_url = line
+                full_url = f"{base_url}/{line}" if not line.startswith("http") else line
                 modified_content += full_url + "\n"
         
         # Faylı qovluğa yaz (üzərinə yaz)
@@ -55,5 +50,4 @@ def extract_m3u8(url, index):
 # Skriptin əsas hissəsi
 if __name__ == "__main__":
     for index, url in enumerate(source_urls):
-        if url:  # Əgər URL boş deyilsə
-            extract_m3u8(url, index)
+        extract_m3u8(url, index)
