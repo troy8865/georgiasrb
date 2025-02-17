@@ -4,7 +4,7 @@ import requests
 # Qaynaq linkləri
 source_urls = [
     "",
-    "http://103.161.34.59:8080/live/INFINITYZBRbH14hQF/KWz6KrhQvj/147.ts",
+    "http://103.161.34.59:8080/live/INFINITYZBRbH14hQF/KWz6KrhQvj/147.m3u8",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
