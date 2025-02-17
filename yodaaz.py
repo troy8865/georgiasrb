@@ -12,7 +12,16 @@ def find_m3u8_links(url):
     # M3U8 linklərini tap
     m3u8_links = re.findall(r'https?://[^\s]+\.m3u8', response.text)
     return m3u8_links
+# Faylın yadda saxlanacağı qovluq
+output_folder = "output"
+os.makedirs(output_folder, exist_ok=True)
 
+# m3u8 faylını çıxar və qovluğa yadda saxla
+def extract_m3u8(url, index):
+    try:
+        # m3u8 faylını yüklə
+        response = requests.get(url)
+        response.raise_for_status()  # Xəta yoxlanışı
 def save_m3u8_to_file(links, folder):
     # Qovluq yarat
     if not os.path.exists(folder):
