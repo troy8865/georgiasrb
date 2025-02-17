@@ -32,8 +32,8 @@ def extract_m3u8(url, index):
         # Müxtəlif keyfiyyət seçimləri üçün linklər əlavə edirik
         variants = [
             {"bandwidth": 800000, "resolution": "640x360", "suffix": "a"},
-            {"bandwidth": 1200000, "resolution": "854x480", "suffix": "b"},
-            {"bandwidth": 2000000, "resolution": "1280x720", "suffix": "c"},
+            {"bandwidth": 1200000, "resolution": "854x480", "suffix": "a"},
+            {"bandwidth": 2000000, "resolution": "1280x720", "suffix": "a"},
         ]
         
         for variant in variants:
