@@ -26,9 +26,6 @@ def extract_m3u8(url, index):
         # Faylı oxu və içindəki nisbi linkləri tam URL-yə çevir
         m3u8_content = response.text
         
-        # Mənbə linkinin əsas hissəsini alırıq
-        base_url = url.rsplit('/', 1)[0]  # Əsas URL-ni alırıq
-        
         # Nisbi linkləri tam linklərlə əvəz edirik
         modified_content = ""
         for line in m3u8_content.splitlines():
@@ -36,10 +33,10 @@ def extract_m3u8(url, index):
                 # # işarəsi olan sətirləri olduğu kimi saxlayırıq
                 modified_content += line + "\n"
             elif line.strip():  # Boş olmayan sətirlər
-                # Linkin sonuna ?md5=... hissəsini əlavə edirik
+                # Əgər link nisbidirsə, onun önünə əlavə edirik
                 if not line.startswith("http"):
-                    # Əgər link nisbidirsə, onun önünə əlavə edirik
-                    full_url = f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?{base_url}/{line}"
+                    # Nisbi linki tam linkə çeviririk
+                    full_url = f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?{line}"
                 else:
                     # Əgər link tam URL-dirsə, onu olduğu kimi saxlayırıq
                     full_url = line
