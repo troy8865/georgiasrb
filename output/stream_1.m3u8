@@ -1,0 +1,298 @@
+https://yoda.az/<!DOCTYPE html>
+https://yoda.az/<html lang="en" data-theme="dark">
+https://yoda.az/<head>
+https://yoda.az/    <meta charset="UTF-8" />
+https://yoda.az/    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+https://yoda.az/    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+https://yoda.az/        <title>Yoda.az - Milli telekanalların canlı və arxivli yayım platforması</title>
+https://yoda.az/    <meta property="og:url" content="https://yoda.az/">
+https://yoda.az/    <meta property="og:type" content="website">
+https://yoda.az/    <meta property="og:title" content="Yoda.az - Milli telekanalların canlı və arxivli yayım platforması" />
+https://yoda.az/    <meta property="og:image" content="https://yoda.az/logos/yoda.jpg" />
+https://yoda.az/        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+https://yoda.az/    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+https://yoda.az/    <link rel="preload" href="/font/CodecPro-Ultra.woff2" as="font" type="font/woff2" crossorigin>
+https://yoda.az/    <link rel="preconnect" href="https://fonts.gstatic.com">
+https://yoda.az/    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap&subset=cyrillic,latin-ext"
+https://yoda.az/        rel="stylesheet">
+https://yoda.az/    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+https://yoda.az/    <link rel="stylesheet" href="/extra-player.css">
+https://yoda.az/    <link rel="stylesheet" href="/fonts.css">
+https://yoda.az/    <link rel="stylesheet" href="/style.css">
+https://yoda.az/</head>
+https://yoda.az/<body>
+https://yoda.az/        <script>
+https://yoda.az/    window.fbAsyncInit = function() {
+https://yoda.az/        FB.init({
+https://yoda.az/            appId: '1113213475685518',
+https://yoda.az/            autoLogAppEvents: true,
+https://yoda.az/            xfbml: true,
+https://yoda.az/            version: 'v6.0'
+https://yoda.az/        });
+https://yoda.az/    };
+https://yoda.az/    </script>
+https://yoda.az/    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+https://yoda.az/    <div id="fb-root"></div>
+https://yoda.az/    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v6.0">
+https://yoda.az/    </script>
+https://yoda.az/    <div class="global-container">
+https://yoda.az/        <header class="header">
+https://yoda.az/            <div class="header-container">
+https://yoda.az/                <div class="head-logo-cont">
+https://yoda.az/                    <svg class="head-logo" xmlns="http://www.w3.org/2000/svg" width="145" height="25"
+https://yoda.az/                        viewBox="0 0 145 25">
+https://yoda.az/                        <g id="Group_1" data-name="Group 1" transform="translate(-232 -16)">
+https://yoda.az/                            <text id="YODA" transform="translate(232 36)" fill="#fff" font-size="28">
+https://yoda.az/                                <tspan x="0" y="0">YODA</tspan>
+https://yoda.az/                            </text>
+https://yoda.az/                            <text id="AZ" transform="translate(339 36)" fill="#fff" font-size="28">
+https://yoda.az/                                <tspan x="0" y="0">AZ</tspan>
+https://yoda.az/                            </text>
+https://yoda.az/                            <circle id="Ellipse_1" data-name="Ellipse 1" cx="8" cy="8" r="8"
+https://yoda.az/                                transform="translate(318 20)" fill="#f91b3d" />
+https://yoda.az/                        </g>
+https://yoda.az/                    </svg>
+https://yoda.az/                </div>
+https://yoda.az/                <ul class="menu">
+https://yoda.az/                    <li class="menu-item"><a href="/tv/">TV</a></li>
+https://yoda.az/                    <li class="menu-item"> <a href="/radio/">RADİO</a></li>
+https://yoda.az/                    <li class="menu-item"> <a href="https://bhb.az/" target="_blank">TV və RADİODA reklam</a></li>
+https://yoda.az/                    <li class="menu-item"> <a href="#">HAQQIMIZDA</a> </li>
+https://yoda.az/                </ul>
+https://yoda.az/                <button class="menu-toggle">
+https://yoda.az/                    <span class="fa-stack">
+https://yoda.az/                        <i class="far fa-circle fa-stack-2x"></i>
+https://yoda.az/                        <i class="fas fa-bars fa-stack-1x"></i>
+https://yoda.az/                    </span>
+https://yoda.az/                </button>
+https://yoda.az/                <!-- <button class="control-btn login-btn">
+https://yoda.az/          <p class="login-text">DAXİL OL</p>
+https://yoda.az/          <i class="fas fa-user"></i>
+https://yoda.az/        </button> -->
+https://yoda.az/                <div class="toggle-container">
+https://yoda.az/                    <input type="checkbox" id="theme-switch" checked /><label for="theme-switch">Theme</label>
+https://yoda.az/                </div>
+https://yoda.az/            </div>
+https://yoda.az/        </header>
+https://yoda.az/        <div class="record-modal">
+https://yoda.az/            <button class="close-modal"><i class="fas fa-times"></i></button>
+https://yoda.az/            <div class="modal-container">
+https://yoda.az/                <video id="webplayer-modal" height="80%" controls></video>
+https://yoda.az/                <div class="monitoring-bottom">
+https://yoda.az/                    <div class="start-rec-modal">
+https://yoda.az/                        <input class="start-rec-time-modal" type="time" name="start-time" step="1">
+https://yoda.az/                        <button class="control-btn start-rec-btn-modal">Set start</button>
+https://yoda.az/                    </div>
+https://yoda.az/                    <div class="stop-rec">
+https://yoda.az/                        <input class="stop-rec-time-modal" type="time" name="stop-time" step="1">
+https://yoda.az/                        <button class="control-btn stop-rec-btn-modal">Set stop</button>
+https://yoda.az/                        <a href="#" class="control-btn download-link" target="_blank">Download</a>
+https://yoda.az/                    </div>
+https://yoda.az/                </div>
+https://yoda.az/            </div>
+https://yoda.az/        </div>
+https://yoda.az/                    <div class="player-container" data-route="tv"
+https://yoda.az/                        data-token="c1f1951550888f58e4bb8f50ba311e7b44d27681-96cae95ab1778a8d35104263bdf001b7-1739829102-1739818302">
+https://yoda.az/                        <div class="monitoring">
+https://yoda.az/                            <div class="monitoring-top">
+https://yoda.az/                                <div class="channel-switch">
+https://yoda.az/                                    <button class="switch-btn c-switch-btn">Kanal</button>
+https://yoda.az/                                    <ul class="channel-list"></ul>
+https://yoda.az/                                </div>
+https://yoda.az/                                <div class="program-switch">
+https://yoda.az/                                    <button class="switch-btn p-switch-btn">
+https://yoda.az/                                        Proqram
+https://yoda.az/                                    </button>
+https://yoda.az/                                    <ul class="program-list"></ul>
+https://yoda.az/                                </div>
+https://yoda.az/                                <button class="control-btn fb-btn-mobile">paylaş</button>
+https://yoda.az/                            </div>
+https://yoda.az/                            <div class="monitoring-bottom">
+https://yoda.az/                                <!-- <div class="switch-btn">Reklam</div> -->
+https://yoda.az/                                <div class="share-container">
+https://yoda.az/                                    <div class="share-tooltip">Copied</div>
+https://yoda.az/                                    <input type="text" class="share-input">
+https://yoda.az/                                    <button class="control-btn share-btn"><i class="fas fa-link"></i></button>
+https://yoda.az/                                    <button class="control-btn fb-btn">PAYLAŞ</button>
+https://yoda.az/                                </div>
+https://yoda.az/                                <div class="ads"><a href="" target="_blank"><img class="ads-banner"
+https://yoda.az/                                            src="/banners/default.png" alt="ads" width="100%" height="100%"
+https://yoda.az/                                            style="opacity: 0;"></a>
+https://yoda.az/                                </div>
+https://yoda.az/                            </div>
+https://yoda.az/                        </div>
+https://yoda.az/                        <div class="vid-container" data-ssl-route="1">
+https://yoda.az/                            <div class="timercont">
+https://yoda.az/                                <svg class="head-logo" xmlns="http://www.w3.org/2000/svg" width="145" height="25"
+https://yoda.az/                                    viewBox="0 0 145 25">
+https://yoda.az/                                    <g id="Group_1" data-name="Group 1" transform="translate(-232 -16)">
+https://yoda.az/                                        <text id="YODA" transform="translate(232 36)" fill="#fff" font-size="28">
+https://yoda.az/                                            <tspan x="0" y="0">YODA</tspan>
+https://yoda.az/                                        </text>
+https://yoda.az/                                        <text id="AZ" transform="translate(339 36)" fill="#fff" font-size="28">
+https://yoda.az/                                            <tspan x="0" y="0">AZ</tspan>
+https://yoda.az/                                        </text>
+https://yoda.az/                                        <circle id="Ellipse_1" data-name="Ellipse 1" cx="8" cy="8" r="8"
+https://yoda.az/                                            transform="translate(318 20)" fill="#f91b3d" />
+https://yoda.az/                                    </g>
+https://yoda.az/                                </svg>
+https://yoda.az/                                <div class="timer"></div>
+https://yoda.az/                            </div>
+https://yoda.az/                            <div class="content-container">
+https://yoda.az/                                <video id="webplayer" width="100%" playsInline autoplay></video>
+https://yoda.az/                                <div class="ads-container"></div>
+https://yoda.az/                                <!-- <div class="ima-ads-container"></div> -->
+https://yoda.az/                            </div>
+https://yoda.az/                            <div class="extra-controls">
+https://yoda.az/                                <div class="time-input">
+https://yoda.az/                                    <input type="number" class="input-time input-hours" id="" min="0" max="23" />:<input
+https://yoda.az/                                        type="number" class="input-time input-minutes" min="0" max="59" />
+https://yoda.az/                                    <button class="control-btn btn-time-input">
+https://yoda.az/                                        <img src="./banners/arrow.png" alt="" srcset="" width="20px"
+https://yoda.az/                                            style="margin-top: 3px;">
+https://yoda.az/                                    </button>
+https://yoda.az/                                </div>
+https://yoda.az/                                <button class="control-btn btn-rewind" data-value="300">-5:00</button>
+https://yoda.az/                                <button class="control-btn btn-rewind" data-value="60">-1:00</button>
+https://yoda.az/                                <button class="control-btn btn-rewind" data-value="30">-0:30</button>
+https://yoda.az/                                <button class="control-btn play-button">
+https://yoda.az/                                    <img src="./banners/play.png" alt="" srcset="" width="20px"
+https://yoda.az/                                        style="margin-top: 3px;">
+https://yoda.az/                                </button>
+https://yoda.az/                                <button class="control-btn btn-forward" data-value="30">+0:30</button>
+https://yoda.az/                                <button class="control-btn btn-forward" data-value="60">+1:00</button>
+https://yoda.az/                                <button class="control-btn btn-forward" data-value="300">
+https://yoda.az/                                    +5:00
+https://yoda.az/                                </button>
+https://yoda.az/                                <button class="control-btn live-button">CANLI</button>
+https://yoda.az/                                <div class="volume-controls">
+https://yoda.az/                                    <div class="volume-slider"></div>
+https://yoda.az/                                    <button class="control-btn volume-mute">
+https://yoda.az/                                        <img class="fa-volume-up volume-icons" src="./banners/volume-up.png" alt=""
+https://yoda.az/                                            srcset="" width="20px" style="margin-top: 3px;">
+https://yoda.az/                                        <img class="fa-volume-mute volume-icons" src="./banners/mute.png" alt=""
+https://yoda.az/                                            srcset="" width="20px" style="margin-top: 3px;">
+https://yoda.az/                                    </button>
+https://yoda.az/                                </div>
+https://yoda.az/                                <button class="control-btn btn-fullscreen enterFullscreen">
+https://yoda.az/                                    <img src="./banners/fullscreen.png" alt="" srcset="" width="20px"
+https://yoda.az/                                        style="margin-top: 3px;">
+https://yoda.az/                                </button>
+https://yoda.az/                            </div>
+https://yoda.az/                        </div>
+https://yoda.az/                        <div class="right-ad-banner">
+https://yoda.az/                            <ins class="ainsyndication" style="display:block; width: 160px; height: 600px;"
+https://yoda.az/                                data-ad-slot="5949"></ins>
+https://yoda.az/                        </div>
+https://yoda.az/                    </div>
+https://yoda.az/                    <div class="mobile-ad-banner">
+https://yoda.az/                        <ins class="ainsyndication" style="display:block; width: 320px; height: 100px;"
+https://yoda.az/                            data-ad-slot="5950"></ins>
+https://yoda.az/                    </div>
+https://yoda.az/                    <div class="ruler"></div>
+https://yoda.az/                    <div class="seekbar-container">
+https://yoda.az/                        <div class="seekbar-click"></div>
+https://yoda.az/                        <div class="hint"></div>
+https://yoda.az/                    </div>
+https://yoda.az/                    <div class="date-picker"></div>
+https://yoda.az/                    <div class="mobile-ad-banner">
+https://yoda.az/                        <img src="./banners/bhb-mobile.png" alt="bhb mobile ad">
+https://yoda.az/                    </div>
+https://yoda.az/                    <footer class="footer">
+https://yoda.az/                        <div class="comp-logo">
+https://yoda.az/                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 798.01 250.8">
+https://yoda.az/                                <defs>
+https://yoda.az/                                    <style>
+https://yoda.az/                                    .cls-1 {
+https://yoda.az/                                        fill: #f70000;
+https://yoda.az/                                    }
+https://yoda.az/                                    .cls {
+https://yoda.az/                                        fill: #fff;
+https://yoda.az/                                    }
+https://yoda.az/                                    </style>
+https://yoda.az/                                </defs>
+https://yoda.az/                                <title>logo_color</title>
+https://yoda.az/                                <g id="Layer_2" data-name="Layer 2">
+https://yoda.az/                                    <g id="Layer_1-2" data-name="Layer 1">
+https://yoda.az/                                        <path class="cls"
+https://yoda.az/                                            d="M82,237.92H60.05a1.21,1.21,0,0,1-1.36-1.37L54,197.67H29.66l-4.93,38.88a1.21,1.21,0,0,1-1.37,1.37H1.46a1.88,1.88,0,0,1-1.1-.41.71.71,0,0,1-.27-1l26-190.29c.37-.92.82-1.37,1.37-1.37h29c.55,0,1,.45,1.37,1.37L83.33,236.55a.71.71,0,0,1-.28,1A1.83,1.83,0,0,1,82,237.92Zm-35.6-102.4q-1.09-9.87-2.46-27.93t-1.37-26H41.16q0,8.2-1.5,27.79t-2.33,26.15L32.4,174.4H51Z" />
+https://yoda.az/                                        <path class="cls"
+https://yoda.az/                                            d="M123.52,214.64h43a1.21,1.21,0,0,1,1.37,1.37v20.54a1.21,1.21,0,0,1-1.37,1.37h-66a1.21,1.21,0,0,1-1.37-1.37v-16.7l.28-1.65,44.08-150H105.72a1.21,1.21,0,0,1-1.36-1.37V46.26a1.2,1.2,0,0,1,1.36-1.37h60.79a1.21,1.21,0,0,1,1.37,1.37V63.5l-.28,1.65Z" />
+https://yoda.az/                                        <path class="cls"
+https://yoda.az/                                            d="M214.37,127.3h28.75a1.21,1.21,0,0,1,1.37,1.37v20.54a1.21,1.21,0,0,1-1.37,1.36H214.37v64.07h34.22A1.21,1.21,0,0,1,250,216v20.54a1.21,1.21,0,0,1-1.37,1.37H191.1a1.21,1.21,0,0,1-1.37-1.37V46.26a1.21,1.21,0,0,1,1.37-1.37h57.49A1.21,1.21,0,0,1,250,46.26V66.79a1.21,1.21,0,0,1-1.37,1.37H214.37Z" />
+https://yoda.az/                                        <path class="cls"
+https://yoda.az/                                            d="M320.69,237.92a1.85,1.85,0,0,1-1.64-.82q-2.19-3-2.19-10.41V161.53c0-3.84-.42-6.44-1.24-7.81s-3.15-2.05-7-2.05H297.69v84.88a1.21,1.21,0,0,1-1.37,1.37h-21.9a1.21,1.21,0,0,1-1.37-1.37V46.26a1.21,1.21,0,0,1,1.37-1.37H305.9q15.35,0,25.47,7.94T341.5,76.37V115a30.73,30.73,0,0,1-3.29,14.65,17.92,17.92,0,0,1-9.85,8.62v1.37c4.74.92,8.12,2.69,10.13,5.34s3,7.08,3,13.28v53.67a109.15,109.15,0,0,0,.68,14.1,30.69,30.69,0,0,0,3.7,10.27c.55,1.09.27,1.64-.82,1.64Zm-6.3-167.16q-2.46-2.33-8.49-2.33h-8.21v60h8.21q6,0,8.49-2.33c1.64-1.55,2.47-4.06,2.47-7.53V78.29C316.86,74.82,316,72.31,314.39,70.76Z" />
+https://yoda.az/                                        <path class="cls"
+https://yoda.az/                                            d="M477.47,214.64h43a1.21,1.21,0,0,1,1.37,1.37v20.54a1.21,1.21,0,0,1-1.37,1.37h-66a1.21,1.21,0,0,1-1.37-1.37v-16.7l.27-1.65,44.08-150H459.67a1.21,1.21,0,0,1-1.37-1.37V46.26a1.21,1.21,0,0,1,1.37-1.37h60.78a1.21,1.21,0,0,1,1.37,1.37V63.5l-.27,1.65Z" />
+https://yoda.az/                                        <path class="cls"
+https://yoda.az/                                            d="M541.81,208.89v-135q0-15.61,10.13-23.68t25.46-8.08q15.35,0,25.47,8.08T613,73.91v135q0,15.62-10.13,23.69t-25.47,8.08q-15.33,0-25.46-8.08T541.81,208.89ZM588.36,207V75.83c0-3.47-.83-6.07-2.47-7.81s-4.47-2.6-8.49-2.6-6.84.87-8.48,2.6-2.47,4.34-2.47,7.81V207q0,5.21,2.47,7.8c1.64,1.74,4.47,2.6,8.48,2.6s6.85-.86,8.49-2.6S588.36,210.45,588.36,207Z" />
+https://yoda.az/                                        <path class="cls"
+https://yoda.az/                                            d="M638.79,46.26a1.21,1.21,0,0,1,1.37-1.37h22.18A1.29,1.29,0,0,1,663.71,46l27.93,144.3H693q-3.3-28.49-4.8-57.37t-1.5-49.14V46.26a1.21,1.21,0,0,1,1.37-1.37h20.53A1.21,1.21,0,0,1,710,46.26V236.55a1.21,1.21,0,0,1-1.37,1.37H686.43a1.47,1.47,0,0,1-1.64-1.1L656.86,98.55h-1.37a661.51,661.51,0,0,1,6.58,93.64v44.36a1.21,1.21,0,0,1-1.37,1.37H640.16a1.21,1.21,0,0,1-1.37-1.37Z" />
+https://yoda.az/                                        <path class="cls"
+https://yoda.az/                                            d="M762.42,127.3h28.75a1.21,1.21,0,0,1,1.36,1.37v20.54a1.2,1.2,0,0,1-1.36,1.36H762.42v64.07h34.22A1.21,1.21,0,0,1,798,216v20.54a1.21,1.21,0,0,1-1.37,1.37h-57.5a1.21,1.21,0,0,1-1.37-1.37V46.26a1.21,1.21,0,0,1,1.37-1.37h57.5A1.21,1.21,0,0,1,798,46.26V66.79a1.21,1.21,0,0,1-1.37,1.37H762.42Z" />
+https://yoda.az/                                        <path class="cls-1" d="M413.24,36H386.46a20.43,20.43,0,0,0,26.78,0Z" />
+https://yoda.az/                                        <path class="cls-1"
+https://yoda.az/                                            d="M430.49,36.72a34.66,34.66,0,0,1-61,.43c-5.25,2.2-8.65,7.29-7.86,12.86l26.54,191c.85,5.62,6.15,9.81,12.43,9.81h0c6.27,0,11.58-4.19,12.42-9.81L439.52,50C440.37,44,436.39,38.61,430.49,36.72Z" />
+https://yoda.az/                                        <circle class="cls-1" cx="399.85" cy="20.5" r="20.5" />
+https://yoda.az/                                    </g>
+https://yoda.az/                                </g>
+https://yoda.az/                            </svg>
+https://yoda.az/                        </div>
+https://yoda.az/                        <div>
+https://yoda.az/                            <p>© 2020 Yoda.az. Sayt <a href="https://azerizone.net" target="_blank"
+https://yoda.az/                                    class="azerizone-link">Azerizone</a>
+https://yoda.az/                                şirkəti tərəfindən yaradılıb və ona məxsusdur.
+https://yoda.az/                            </p>
+https://yoda.az/                            <p>Əlaqə üçün: +99412 488 6606, info@azerizone.net</p>
+https://yoda.az/                        </div>
+https://yoda.az/                        <div>
+https://yoda.az/                        </div>
+https://yoda.az/                        <!-- Yandex.Metrika counter -->
+https://yoda.az/                        <script type="text/javascript">
+https://yoda.az/                        (function(m, e, t, r, i, k, a) {
+https://yoda.az/                            m[i] = m[i] || function() {
+https://yoda.az/                                (m[i].a = m[i].a || []).push(arguments)
+https://yoda.az/                            };
+https://yoda.az/                            m[i].l = 1 * new Date();
+https://yoda.az/                            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a
+https://yoda.az/                                .parentNode.insertBefore(
+https://yoda.az/                                    k,
+https://yoda.az/                                    a)
+https://yoda.az/                        })
+https://yoda.az/                        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+https://yoda.az/                        ym(57310591, "init", {
+https://yoda.az/                            clickmap: true,
+https://yoda.az/                            trackLinks: true,
+https://yoda.az/                            accurateTrackBounce: true,
+https://yoda.az/                            webvisor: true
+https://yoda.az/                        });
+https://yoda.az/                        </script>
+https://yoda.az/                        <noscript>
+https://yoda.az/                            <div><img src="https://mc.yandex.ru/watch/57310591" style="position:absolute; left:-9999px;"
+https://yoda.az/                                    alt="" /></div>
+https://yoda.az/                        </noscript>
+https://yoda.az/                        <!-- /Yandex.Metrika counter -->
+https://yoda.az/                        <!-- Global site tag (gtag.js) - Google Analytics -->
+https://yoda.az/                        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32600686-3"></script>
+https://yoda.az/                        <script>
+https://yoda.az/                        window.dataLayer = window.dataLayer || [];
+https://yoda.az/                        function gtag() {
+https://yoda.az/                            dataLayer.push(arguments);
+https://yoda.az/                        }
+https://yoda.az/                        gtag('js', new Date());
+https://yoda.az/                        gtag('config', 'UA-32600686-3');
+https://yoda.az/                        </script>
+https://yoda.az/                    </footer>
+https://yoda.az/                </div>
+https://yoda.az/                <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+https://yoda.az/    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.28/moment-timezone-with-data.min.js"> -->
+https://yoda.az/                </script>
+https://yoda.az/                <script src="https://kit.fontawesome.com/e9a79f2009.js" crossorigin="anonymous"></script>
+https://yoda.az/                                <script src="/tv.channel.config.js"></script>
+https://yoda.az/                                <script async src="//code.ainsyndication.com/v2/js/slot.js?09062020"></script>
+https://yoda.az/                <script async src="//code.ainsyndication.com/v2/js/slot.js?09062020"></script>
+https://yoda.az/                <script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+https://yoda.az/                <script src="/bundle.js"></script>
+https://yoda.az/                <script src="/ads.js"></script>
+https://yoda.az/</body>
+https://yoda.az/</html>
