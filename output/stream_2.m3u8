@@ -1,8 +1,0 @@
-#EXTM3U
-#EXT-X-VERSION:3
-#EXT-X-STREAM-INF:BANDWIDTH=800000,RESOLUTION=640x360
-https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?tracks-v1a/index.fmp4.m3u8?remote=no_check_ip&token=1e0284b979ceb30bb9d1ef408e4dd8c8e362005a-38dc65c08c7ad97411942c76c9a12762-1739825087-1739814287
-#EXT-X-STREAM-INF:BANDWIDTH=1200000,RESOLUTION=854x480
-https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?tracks-v1a/index.fmp4.m3u8?remote=no_check_ip&token=1e0284b979ceb30bb9d1ef408e4dd8c8e362005a-38dc65c08c7ad97411942c76c9a12762-1739825087-1739814287
-#EXT-X-STREAM-INF:BANDWIDTH=2000000,RESOLUTION=1280x720
-https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?tracks-v1a/index.fmp4.m3u8?remote=no_check_ip&token=1e0284b979ceb30bb9d1ef408e4dd8c8e362005a-38dc65c08c7ad97411942c76c9a12762-1739825087-1739814287
