@@ -6,7 +6,6 @@ source_urls = [
     "",
     "http://raalbatros.serv00.net/Freeshot.php?ID=bein-sports-1-turkey/158",
     # Buraya digər m3u8 linklərini əlavə edin
-    "http://raalbatros.serv00.net/Freeshot.php?ID=bein-sports-2-turkey/159",
 ]
 
 # Faylın yadda saxlanacağı qovluq
