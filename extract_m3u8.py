@@ -36,7 +36,7 @@ def extract_m3u8(url, index):
         for line in m3u8_content:
             if line.strip() and not line.startswith("#"):  # Tərkibdə "#" olmayan sətirləri seç
                 # Linkin tam formasını götür (token də daxil olmaqla)
-                full_url = f"https://demiroren.daioncdn.net/kanald/{line.strip()}"
+                full_url = f"https://nowtv-live-ad.ercdn.net/nowtv/{line.strip()}"
                 # Multi-variant m3u8 formatına uyğun olaraq yazırıq
                 modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{full_url}\n"
         
