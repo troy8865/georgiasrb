@@ -24,28 +24,37 @@ def generate_dynamic_params():
 
 # Linki yeniləmək üçün funksiya
 def update_link(line):
-    if "tkn=" in line and "tms=" in line and "ip=" in line:
-        # Linki parametrlərə ayırırıq
-        base_url, query_string = line.split("?", 1)
-        params = query_string.split("&")
-        
-        # Parametrləri yeniləyirik
-        new_params = []
-        tkn, tms, ip = generate_dynamic_params()
-        for param in params:
-            if param.startswith("tkn="):
-                new_params.append(f"tkn={tkn}")
-            elif param.startswith("tms="):
-                new_params.append(f"tms={tms}")
-            elif param.startswith("ip="):
-                new_params.append(f"ip={ip}")
-            else:
-                new_params.append(param)  # Digər parametrləri olduğu kimi saxlayırıq
-        
-        # Yeni linki qururuq
-        updated_query_string = "&".join(new_params)
-        updated_link = f"{base_url}?{updated_query_string}"
-        return updated_link
+    # Linkin içindəki parametrləri yeniləmək üçün regex istifadə edirik
+    if "?" in line and ("tkn=" in line or "tms=" in line or "ip=" in line):
+        try:
+            # Linki əsas URL və query string-ə bölürük
+            base_url, query_string = line.split("?", 1)
+            
+            # Query string-i parametrlərə ayırırıq
+            params = query_string.split("&")
+            
+            # Yeni parametrləri yaradırıq
+            new_params = []
+            tkn, tms, ip = generate_dynamic_params()
+            for param in params:
+                if param.startswith("tkn="):
+                    new_params.append(f"tkn={tkn}")
+                elif param.startswith("tms="):
+                    new_params.append(f"tms={tms}")
+                elif param.startswith("ip="):
+                    new_params.append(f"ip={ip}")
+                else:
+                    new_params.append(param)  # Digər parametrləri olduğu kimi saxlayırıq
+            
+            # Yeni query string-i birləşdiririk
+            updated_query_string = "&".join(new_params)
+            updated_link = f"{base_url}?{updated_query_string}"
+            
+            # Linkin ətrafındakı əlavə mətnləri saxlayırıq
+            return line.replace(query_string, updated_query_string)
+        except Exception as e:
+            print(f"Link yenilənməsində xəta: {e}")
+            return line
     return line
 
 # m3u8 faylını çıxar və qovluğa yadda saxla
