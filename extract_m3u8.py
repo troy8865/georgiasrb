@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "https://nowtv-live-ad.ercdn.net/nowtv/playlist.m3u8?st=Sy1gPuSSUOnozAEoW6fMWg&e=1739928943",
+    "https://nowtv-live-ad.ercdn.net",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
