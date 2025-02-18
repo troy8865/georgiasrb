@@ -1,43 +1,54 @@
 import os
 import requests
-import re
 
-# Qaynaq linki
-source_url = "https://rutube.ru/live/video/c58f502c7bb34a8fcdd976b221fca292/?category=1"
+# Qaynaq linkləri
+source_urls = [
+    "http://raalbatros.serv00.net/Freeshot.php?ID=bein-sports-1-turkey/158",
+    # Buraya digər m3u8 linklərini əlavə edin
+]
 
 # Faylın yadda saxlanacağı qovluq
 output_folder = "output"
 os.makedirs(output_folder, exist_ok=True)
 
-# m3u8 linklərini çıxar və fayla əlavə et
-def extract_and_save_m3u8(url):
+# m3u8 faylını çıxar və qovluğa yadda saxla
+def extract_m3u8(url, index):
     try:
-        # Səhifəni yüklə
+        # m3u8 faylını yüklə
         response = requests.get(url)
-        response.raise_for_status()
-
-        # HTML içindən m3u8 linklərini tapmaq üçün regex istifadə edirik
-        m3u8_pattern = r"https://[^\s\"']+\.m3u8"
-        matches = re.findall(m3u8_pattern, response.text)
-
-        if matches:
-            print(f"Tapılan m3u8 linkləri: {len(matches)}")
-            
-            # Fayl adını təyin et
-            filename = os.path.join(output_folder, "m3u8_links.txt")
-            
-            # Fayla m3u8 linklərini əlavə et
-            with open(filename, "w", encoding="utf-8") as file:
-                for m3u8_url in matches:
-                    file.write(m3u8_url + "\n")
-                    print(f"Əlavə edildi: {m3u8_url}")
-            
-            print(f"M3u8 linkləri uğurla '{filename}' faylına yadda saxlandı.")
-        else:
-            print("M3u8 linki tapılmadı.")
+        response.raise_for_status()  # Xəta yoxlanışı
+        
+        # Fayl adını index ilə fərqləndir
+        filename = f"stream_{index}.m3u8"
+        file_path = os.path.join(output_folder, filename)
+        
+        # Faylı oxu və içindəki nisbi linkləri tam URL-yə çevir
+        m3u8_content = response.text.splitlines()
+        
+        # Debug: Qaynaq faylının məzmununu çap et
+        print("Qaynaq faylının məzmunu:")
+        print(m3u8_content)
+        
+        # Multi-variant m3u8 faylı üçün əsas strukturu yaradırıq
+        modified_content = "#EXTM3U\n#EXT-X-VERSION:3\n"
+        
+        # İçindəki linkləri işləyib, onların önünə əsas URL əlavə edirik
+        for line in m3u8_content:
+            if line.strip() and not line.startswith("#"):  # Tərkibdə "#" olmayan sətirləri seç
+                # Linkin tam formasını götür (token də daxil olmaqla)
+                full_url = f"https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/{line.strip()}"
+                # Multi-variant m3u8 formatına uyğun olaraq yazırıq
+                modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{full_url}\n"
+        
+        # Faylı qovluğa yaz (üzərinə yaz)
+        with open(file_path, "w", encoding="utf-8") as file:
+            file.write(modified_content)
+        print(f"m3u8 faylı uğurla yeniləndi: {file_path}")
     except Exception as e:
         print(f"Xəta baş verdi: {e}")
 
 # Skriptin əsas hissəsi
 if __name__ == "__main__":
-    extract_and_save_m3u8(source_url)
+    for index, url in enumerate(source_urls):
+        if url:  # Əgər URL boş deyilsə
+            extract_m3u8(url, index)
