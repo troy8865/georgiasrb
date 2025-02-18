@@ -1,4 +1,6 @@
-#EXTINF:-1 tvg-logo="https://i.ibb.co/0DpKtzT/nowtvturk.png" tvg-id="Fox.tr",NOW
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-STREAM-INF:BANDWIDTH=331520,FRAME-RATE=25.00
 https://nowtv.daioncdn.net/nowtv/nowtv.m3u8?st=WTnDJtzO84hrH5KjQFwlXQ&e=1739935612
-#EXTINF:-1 tvg-logo="https://i.ibb.co/0DpKtzT/nowtvturk.png" tvg-id="Fox.tr",NOW
+#EXT-X-STREAM-INF:BANDWIDTH=492891,FRAME-RATE=25.00
 https://nowtv-live-ad.ercdn.net/nowtv/playlist.m3u8?st=WTnDJtzO84hrH5KjQFwlXQ&e=1739935612
