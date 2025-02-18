@@ -18,7 +18,6 @@ def extract_m3u8_from_rutube(url):
         response.raise_for_status()
 
         # HTML içindən m3u8 linkini tapmaq üçün regex istifadə edirik
-        # Məsələn: https://.../720p_stream.m3u8 kimi bir link axtarıram
         m3u8_pattern = r"https://[^\s\"']+\.m3u8"
         matches = re.findall(m3u8_pattern, response.text)
 
@@ -44,6 +43,11 @@ def save_m3u8_to_file(m3u8_url, index):
         # Fayl adını index ilə fərqləndir
         filename = f"stream_{index}.m3u8"
         file_path = os.path.join(output_folder, filename)
+        
+        # Mövcud faylı sil
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            print(f"Mövcud fayl silindi: {file_path}")
         
         # Faylın məzmununu oxu
         m3u8_content = response.text.splitlines()
