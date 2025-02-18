@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "https://rutube.ru/live/video/c58f502c7bb34a8fcdd976b221fca292/?category=1",
+    "https://salam-mskth-30.rutube.ru",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
