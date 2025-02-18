@@ -21,7 +21,7 @@ def generate_dynamic_url():
     tkn = ''.join(random.choices(string.ascii_letters + string.digits, k=22))  # 22 simvol uzunluğunda təsadüfi token
     tms = str(int(time.time()))  # Cari Unix zamanı (timestamp)
     hst = "tv.canlitv.vip"  # Host adı
-    ip = ".".join(map(str, (random.randint(0, 255) for _ in range(4))))  # Təsadüfi IP ünvanı
+    ip = "91.185.186.151"  # Sizin təqdim etdiyiniz IP sabit qalır
     
     # Parametrləri URL-ə əlavə edirik
     dynamic_url = f"https://cdn900.canlitv.vip/sabantv.m3u8?accesscode={accesscode}&tkn={tkn}&tms={tms}&hst={hst}&ip={ip}"
