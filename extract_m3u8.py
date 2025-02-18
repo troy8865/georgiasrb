@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "https://mhd128.iptv2022.com/p/gh_CWtUUb0OvvxxhYW32vQ,1739912404/streaming/channeluplus7/324/1/index.m3u8",
+    "https://api.iptv2022.com/get_token",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
