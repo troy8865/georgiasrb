@@ -15,17 +15,38 @@ output_folder = "output"
 os.makedirs(output_folder, exist_ok=True)
 
 # Dinamik token və parametrlər yaratmaq üçün funksiya
-def generate_dynamic_url():
+def generate_dynamic_params():
     # Token və digər parametrləri yaradırıq
-    accesscode = "fbly"  # Sabit qalır
     tkn = ''.join(random.choices(string.ascii_letters + string.digits, k=22))  # 22 simvol uzunluğunda təsadüfi token
     tms = str(int(time.time()))  # Cari Unix zamanı (timestamp)
-    hst = "tv.canlitv.vip"  # Host adı
-    ip = "91.185.186.151"  # Sizin təqdim etdiyiniz IP sabit qalır
-    
-    # Parametrləri URL-ə əlavə edirik
-    dynamic_url = f"https://cdn900.canlitv.vip/sabantv.m3u8?accesscode={accesscode}&tkn={tkn}&tms={tms}&hst={hst}&ip={ip}"
-    return dynamic_url
+    ip = "91.185.186.151"  # Sabit IP
+    return tkn, tms, ip
+
+# Linki yeniləmək üçün funksiya
+def update_link(line):
+    if "tkn=" in line and "tms=" in line and "ip=" in line:
+        # Linki parametrlərə ayırırıq
+        base_url, query_string = line.split("?", 1)
+        params = query_string.split("&")
+        
+        # Parametrləri yeniləyirik
+        new_params = []
+        tkn, tms, ip = generate_dynamic_params()
+        for param in params:
+            if param.startswith("tkn="):
+                new_params.append(f"tkn={tkn}")
+            elif param.startswith("tms="):
+                new_params.append(f"tms={tms}")
+            elif param.startswith("ip="):
+                new_params.append(f"ip={ip}")
+            else:
+                new_params.append(param)  # Digər parametrləri olduğu kimi saxlayırıq
+        
+        # Yeni linki qururuq
+        updated_query_string = "&".join(new_params)
+        updated_link = f"{base_url}?{updated_query_string}"
+        return updated_link
+    return line
 
 # m3u8 faylını çıxar və qovluğa yadda saxla
 def extract_m3u8(url, index):
@@ -45,12 +66,16 @@ def extract_m3u8(url, index):
         print("Qaynaq faylının məzmunu:")
         print(m3u8_content)
         
-        # Dinamik URL yaradırıq
-        dynamic_url = generate_dynamic_url()
-        
         # Multi-variant m3u8 faylı üçün əsas strukturu yaradırıq
-        modified_content = "#EXTM3U\n#EXT-X-VERSION:3\n"
-        modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{dynamic_url}\n"
+        modified_content = ""
+        for line in m3u8_content:
+            if line.strip() and not line.startswith("#"):  # Tərkibdə "#" olmayan sətirləri seç
+                # Linki yeniləmək üçün funksiya çağırılır
+                modified_line = update_link(line)
+                modified_content += f"{modified_line}\n"
+            else:
+                # Əgər sətir meta məlumatdırsa, olduğu kimi saxla
+                modified_content += f"{line}\n"
         
         # Faylı qovluğa yaz (üzərinə yaz)
         with open(file_path, "w", encoding="utf-8") as file:
