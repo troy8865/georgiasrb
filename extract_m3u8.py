@@ -1,61 +1,15 @@
 import os
 import requests
-import time
-import random
-import string
 
 # Qaynaq linkləri
 source_urls = [
-    "https://raalbatros.serv00.net:443/ctv.php?url=https://tv.canlitv.vip/saban-tv",
+    "http://raalbatros.serv00.net/Freeshot.php?ID=bein-sports-1-turkey/158",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
 # Faylın yadda saxlanacağı qovluq
 output_folder = "output"
 os.makedirs(output_folder, exist_ok=True)
-
-# Dinamik token və parametrlər yaratmaq üçün funksiya
-def generate_dynamic_params():
-    # Token və digər parametrləri yaradırıq
-    tkn = ''.join(random.choices(string.ascii_letters + string.digits, k=22))  # 22 simvol uzunluğunda təsadüfi token
-    tms = str(int(time.time()))  # Cari Unix zamanı (timestamp)
-    ip = "91.185.186.151"  # Sabit IP
-    return tkn, tms, ip
-
-# Linki yeniləmək üçün funksiya
-def update_link(line):
-    # Linkin içindəki parametrləri yeniləmək üçün regex istifadə edirik
-    if "?" in line and ("tkn=" in line or "tms=" in line or "ip=" in line):
-        try:
-            # Linki əsas URL və query string-ə bölürük
-            base_url, query_string = line.split("?", 1)
-            
-            # Query string-i parametrlərə ayırırıq
-            params = query_string.split("&")
-            
-            # Yeni parametrləri yaradırıq
-            new_params = []
-            tkn, tms, ip = generate_dynamic_params()
-            for param in params:
-                if param.startswith("tkn="):
-                    new_params.append(f"tkn={tkn}")
-                elif param.startswith("tms="):
-                    new_params.append(f"tms={tms}")
-                elif param.startswith("ip="):
-                    new_params.append(f"ip={ip}")
-                else:
-                    new_params.append(param)  # Digər parametrləri olduğu kimi saxlayırıq
-            
-            # Yeni query string-i birləşdiririk
-            updated_query_string = "&".join(new_params)
-            updated_link = f"{base_url}?{updated_query_string}"
-            
-            # Linkin ətrafındakı əlavə mətnləri saxlayırıq
-            return line.replace(query_string, updated_query_string)
-        except Exception as e:
-            print(f"Link yenilənməsində xəta: {e}")
-            return line
-    return line
 
 # m3u8 faylını çıxar və qovluğa yadda saxla
 def extract_m3u8(url, index):
@@ -68,7 +22,14 @@ def extract_m3u8(url, index):
         filename = f"stream_{index}.m3u8"
         file_path = os.path.join(output_folder, filename)
         
-        # Faylı oxu və içindəki nisbi linkləri tam URL-yə çevir
+        # Faylın mövcud məzmununu oxu (əgər varsa)
+        if os.path.exists(file_path):
+            with open(file_path, "r", encoding="utf-8") as file:
+                existing_content = file.readlines()
+        else:
+            existing_content = []
+        
+        # Yeni m3u8 məzmununu yüklə
         m3u8_content = response.text.splitlines()
         
         # Debug: Qaynaq faylının məzmununu çap et
@@ -76,19 +37,31 @@ def extract_m3u8(url, index):
         print(m3u8_content)
         
         # Multi-variant m3u8 faylı üçün əsas strukturu yaradırıq
-        modified_content = ""
+        modified_content = "#EXTM3U\n#EXT-X-VERSION:3\n"
+        
+        # İçindəki linkləri işləyib, onların önünə əsas URL əlavə etmək lazım deyil
         for line in m3u8_content:
             if line.strip() and not line.startswith("#"):  # Tərkibdə "#" olmayan sətirləri seç
-                # Linki yeniləmək üçün funksiya çağırılır
-                modified_line = update_link(line)
-                modified_content += f"{modified_line}\n"
+                # Linki olduğu kimi saxlayırıq
+                modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{line.strip()}\n"
+        
+        # Mövcud məzmunu qoruyub, yalnız linkləri yeniləyirik
+        final_content = []
+        for existing_line in existing_content:
+            if existing_line.strip().startswith("#EXT-X-STREAM-INF"):
+                # Linklə bağlı olan sətir
+                next_line = existing_content[existing_content.index(existing_line) + 1]
+                if next_line.strip() and not next_line.startswith("#"):
+                    # Linki yeniləyirik (yalnız linkləri olduğu kimi saxlayırıq)
+                    final_content.append(existing_line)
+                    final_content.append(f"{next_line.strip()}\n")
             else:
-                # Əgər sətir meta məlumatdırsa, olduğu kimi saxla
-                modified_content += f"{line}\n"
+                # Digər sətirləri olduğu kimi saxlayırıq
+                final_content.append(existing_line)
         
         # Faylı qovluğa yaz (üzərinə yaz)
         with open(file_path, "w", encoding="utf-8") as file:
-            file.write(modified_content)
+            file.writelines(final_content)
         print(f"m3u8 faylı uğurla yeniləndi: {file_path}")
     except Exception as e:
         print(f"Xəta baş verdi: {e}")
