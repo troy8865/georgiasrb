@@ -1,4 +1,10 @@
 #EXTM3U
 #EXT-X-VERSION:3
 #EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720
-https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/tracks-v1/index.fmp4.m3u8?remote=no_check_ip&token=38116f07af21d02337b33c3cde50bec98f453e9e-22557664af5dd45f8e52bead4aec4175-1739924836-1739914036
+https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/kanald_1080p.m3u8?&sid=76aerxqore1w&app=da2109ea-5dfe-4107-89ab-23593336ed61&ce=3
+#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720
+https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/kanald_720p.m3u8?&sid=76aerxqore1w&app=da2109ea-5dfe-4107-89ab-23593336ed61&ce=3
+#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720
+https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/kanald_480p.m3u8?&sid=76aerxqore1w&app=da2109ea-5dfe-4107-89ab-23593336ed61&ce=3
+#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720
+https://love2live.wideiptv.top/beINSPORTS1TR/index.fmp4.m3u8?/kanald_360p.m3u8?&sid=76aerxqore1w&app=da2109ea-5dfe-4107-89ab-23593336ed61&ce=3
