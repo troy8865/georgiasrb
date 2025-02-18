@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "http://raalbatros.serv00.net/Freeshot.php?ID=bein-sports-1-turkey/158",
+    "https://demiroren.daioncdn.net/kanald/kanald.m3u8?app=kanald_web&ce=3&ppid=67ff1c1378b0f665b3d1dfdb7f7ad2b9",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
