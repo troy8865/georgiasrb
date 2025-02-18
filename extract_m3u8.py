@@ -22,51 +22,18 @@ def extract_m3u8(url, index):
         filename = f"stream_{index}.m3u8"
         file_path = os.path.join(output_folder, filename)
         
-        # Faylın mövcud məzmununu oxu (əgər varsa)
-        if os.path.exists(file_path):
-            with open(file_path, "r", encoding="utf-8") as file:
-                existing_content = file.readlines()
-        else:
-            existing_content = []
-        
-        # Yeni m3u8 məzmununu yüklə
-        m3u8_content = response.text.splitlines()
+        # Faylı oxu
+        m3u8_content = response.text
         
         # Debug: Qaynaq faylının məzmununu çap et
         print("Qaynaq faylının məzmunu:")
         print(m3u8_content)
         
-        # Multi-variant m3u8 faylı üçün əsas strukturu yaradırıq
-        modified_content = "#EXTM3U\n#EXT-X-VERSION:3\n"
-        
-        # İçindəki linkləri işləyib, onların önünə əsas URL əlavə etmək lazım deyil
-        for line in m3u8_content:
-            if line.strip() and not line.startswith("#"):  # Tərkibdə "#" olmayan sətirləri seç
-                # Linki olduğu kimi saxlayırıq
-                modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{line.strip()}\n"
-        
-        # Mövcud məzmunu qoruyub, yalnız linkləri yeniləyirik
-        final_content = []
-        i = 0
-        while i < len(existing_content):
-            line = existing_content[i].strip()
-            if line.startswith("#EXT-X-STREAM-INF"):
-                # Linklə bağlı olan sətir
-                next_line = existing_content[i + 1].strip() if i + 1 < len(existing_content) else ""
-                if next_line and not next_line.startswith("#"):
-                    # Linki yeniləyirik (yalnız linkləri olduğu kimi saxlayırıq)
-                    final_content.append(f"{line}\n")
-                    final_content.append(f"{next_line}\n")
-                    i += 2  # İki sətiri keçirik
-                    continue
-            # Digər sətirləri olduğu kimi saxlayırıq
-            final_content.append(f"{line}\n")
-            i += 1
-        
         # Faylı qovluğa yaz (üzərinə yaz)
         with open(file_path, "w", encoding="utf-8") as file:
-            file.writelines(final_content)
-        print(f"m3u8 faylı uğurla yeniləndi: {file_path}")
+            file.write(m3u8_content)
+        
+        print(f"m3u8 faylı uğurla saxlandı: {file_path}")
     except Exception as e:
         print(f"Xəta baş verdi: {e}")
 
