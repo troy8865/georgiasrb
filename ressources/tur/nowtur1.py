@@ -1,4 +1,3 @@
-
 import requests
 import re
 import os
@@ -19,7 +18,6 @@ if response.status_code == 200:
   
     if match:
         erstrm = match.group(1)
-        print(f"Tapılan URL: {erstrm}")
         
         # Fayla yazmaq üçün tam yol
         file_path = os.path.join(output_dir, output_file)
@@ -27,7 +25,9 @@ if response.status_code == 200:
         # Fayla yazma əməliyyatı
         with open(file_path, 'w') as file:
             file.write(erstrm)
-        print(f"URL '{file_path}' faylına uğurla yazıldı.")
+        
+        # Yalnız URL-i çıxarın
+        print(erstrm)
     else:
         print("erstrm not found in the content.")
 else:
