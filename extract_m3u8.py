@@ -13,8 +13,7 @@ os.makedirs(output_folder, exist_ok=True)
 
 # .ts linkini əvəz edən funksiya
 def replace_ts_with_m3u8(line):
-    if line.strip().endswith('.ts'):
-        # .ts linkini sabantv.m3u8 ilə əvəz et
+    if line.strip().endswith('.ts'):  # Tam URL və ya nisbi yol olan .ts linklərini tapır
         return "https://cdn900.canlitv.vip/sabantv.m3u8?"
     return line
 
