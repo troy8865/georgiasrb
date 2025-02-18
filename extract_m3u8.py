@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "https://api.iptv2022.com/get_token",
+    "https://raalbatros.serv00.net:443/ctv.php?url=https://tv.canlitv.vip/saban-tv",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
