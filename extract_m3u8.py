@@ -11,6 +11,13 @@ source_urls = [
 output_folder = "output"
 os.makedirs(output_folder, exist_ok=True)
 
+# .ts linkini əvəz edən funksiya
+def replace_ts_with_m3u8(line):
+    if line.strip().endswith('.ts'):
+        # .ts linkini sabantv.m3u8 ilə əvəz et
+        return "https://cdn900.canlitv.vip/sabantv.m3u8?"
+    return line
+
 # m3u8 faylını çıxar və qovluğa yadda saxla
 def extract_m3u8(url, index):
     try:
@@ -35,9 +42,12 @@ def extract_m3u8(url, index):
         # İçindəki linkləri işləyib, onların önündəki əlavə edilən hissəni çıxarırıq
         for line in m3u8_content:
             if line.strip() and not line.startswith("#"):  # Tərkibdə "#" olmayan sətirləri seç
-                # Linkin tam formasını götür (əlavə edilən hissəni çıxar)
-                original_url = line.strip()
-                modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{original_url}\n"
+                # Linki əvəz etmək üçün funksiya çağırılır
+                modified_line = replace_ts_with_m3u8(line)
+                modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{modified_line}\n"
+            else:
+                # Əgər sətir meta məlumatdırsa, olduğu kimi saxla
+                modified_content += f"{line}\n"
         
         # Faylı qovluğa yaz (üzərinə yaz)
         with open(file_path, "w", encoding="utf-8") as file:
