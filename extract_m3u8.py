@@ -47,17 +47,21 @@ def extract_m3u8(url, index):
         
         # Mövcud məzmunu qoruyub, yalnız linkləri yeniləyirik
         final_content = []
-        for existing_line in existing_content:
-            if existing_line.strip().startswith("#EXT-X-STREAM-INF"):
+        i = 0
+        while i < len(existing_content):
+            line = existing_content[i].strip()
+            if line.startswith("#EXT-X-STREAM-INF"):
                 # Linklə bağlı olan sətir
-                next_line = existing_content[existing_content.index(existing_line) + 1]
-                if next_line.strip() and not next_line.startswith("#"):
+                next_line = existing_content[i + 1].strip() if i + 1 < len(existing_content) else ""
+                if next_line and not next_line.startswith("#"):
                     # Linki yeniləyirik (yalnız linkləri olduğu kimi saxlayırıq)
-                    final_content.append(existing_line)
-                    final_content.append(f"{next_line.strip()}\n")
-            else:
-                # Digər sətirləri olduğu kimi saxlayırıq
-                final_content.append(existing_line)
+                    final_content.append(f"{line}\n")
+                    final_content.append(f"{next_line}\n")
+                    i += 2  # İki sətiri keçirik
+                    continue
+            # Digər sətirləri olduğu kimi saxlayırıq
+            final_content.append(f"{line}\n")
+            i += 1
         
         # Faylı qovluğa yaz (üzərinə yaz)
         with open(file_path, "w", encoding="utf-8") as file:
