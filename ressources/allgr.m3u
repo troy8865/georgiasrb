@@ -1,6 +1,8 @@
 #EXTM3U
-#EXT-X-VERSION:2
-#EXT-X-STREAM-INF:BANDWIDTH=492891,FRAME-RATE=25.00
+#EXT-X-VERSION:3
+#EXT-X-MEDIA-SEQUENCE:3359681
+#EXT-X-DISCONTINUITY-SEQUENCE:47494
+#EXT-X-TARGETDURATION:10
 https://nowtv.daioncdn.net/nowtv/nowtv.m3u8?st=8ZjI_xyDcTXydwonsg27LA&e=1739934703
 #EXT-X-STREAM-INF:BANDWIDTH=775503,FRAME-RATE=25.00
 https://nowtv.daioncdn.net/nowtv/nowtv.m3u8?st=8ZjI_xyDcTXydwonsg27LA&e=1739934703
@@ -9,7 +11,8 @@ https://nowtv.daioncdn.net/nowtv/nowtv.m3u8?st=8ZjI_xyDcTXydwonsg27LA&e=17399347
 #EXTINF:-1 tvg-logo="https://i.ibb.co/0DpKtzT/nowtvturk.png" tvg-id="Fox.tr" group-title="6. |TR|🇹🇷 ULUSAL GENEL",NOW
 https://nowtv.daioncdn.net/nowtv/nowtv.m3u8?st=8ZjI_xyDcTXydwonsg27LA&e=1739934703
 #EXTINF:-1 tvg-logo="https://i.ibb.co/0DpKtzT/nowtvturk.png" tvg-id="Fox.tr" group-title="6. |TR|🇹🇷 ULUSAL GENEL",NOW
-https://nowtv-live-ad.ercdn.net/nowtv/playlist.m3u8?st=8ZjI_xyDcTXydwonsg27LA&e=1739934703
+https://nowtv-live-ad.ercdn.net/nowtv/nowtv_720p.m3u8?st=8ZjI_xyDcTXydwonsg27LA&e=1739934703
 
+https://nowtv-live-ad.ercdn.net/nowtv/nowtv_720p.m3u8?e=1739973048&st=PEzcWcYlIaj_o3lemYBm5w
 
 https://nowtv-live-ad.ercdn.net/nowtv/nowtv_720p.m3u8?e=1739973048&st=PEzcWcYlIaj_o3lemYBm5w
