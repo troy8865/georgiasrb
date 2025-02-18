@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "https://salam-mskth-30.rutube.ru",
+    "https://mhd128.iptv2022.com/p/gh_CWtUUb0OvvxxhYW32vQ,1739912404/streaming/channeluplus7/324/1/index.m3u8",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
@@ -32,8 +32,12 @@ def extract_m3u8(url, index):
         # Multi-variant m3u8 faylı üçün əsas strukturu yaradırıq
         modified_content = "#EXTM3U\n#EXT-X-VERSION:3\n"
         
-                # Multi-variant m3u8 formatına uyğun olaraq yazırıq
-                modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{full_url}\n"
+        # İçindəki linkləri işləyib, onların önündəki əlavə edilən hissəni çıxarırıq
+        for line in m3u8_content:
+            if line.strip() and not line.startswith("#"):  # Tərkibdə "#" olmayan sətirləri seç
+                # Linkin tam formasını götür (əlavə edilən hissəni çıxar)
+                original_url = line.strip()
+                modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{original_url}\n"
         
         # Faylı qovluğa yaz (üzərinə yaz)
         with open(file_path, "w", encoding="utf-8") as file:
