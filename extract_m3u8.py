@@ -11,7 +11,7 @@ source_urls = [
 output_folder = "output"
 os.makedirs(output_folder, exist_ok=True)
 
-# m3u8 faylını çıxar və qovluğa yadda saxla
+# m3u8 faylını orijinal şəkildə yüklə və qovluğa saxla
 def extract_m3u8(url, index):
     try:
         # m3u8 faylını yüklə
@@ -22,28 +22,18 @@ def extract_m3u8(url, index):
         filename = f"stream_{index}.m3u8"
         file_path = os.path.join(output_folder, filename)
         
-        # Faylı oxu və içindəki nisbi linkləri tam URL-yə çevir
-        m3u8_content = response.text.splitlines()
+        # Faylı oxu və orijinal m3u8 məzmununu saxla
+        m3u8_content = response.text
         
         # Debug: Qaynaq faylının məzmununu çap et
         print("Qaynaq faylının məzmunu:")
         print(m3u8_content)
         
-        # Multi-variant m3u8 faylı üçün əsas strukturu yaradırıq
-        modified_content = "#EXTM3U\n#EXT-X-VERSION:3\n"
-        
-        # İçindəki linkləri işləyib, onların önünə əsas URL əlavə edirik
-        for line in m3u8_content:
-            if line.strip() and not line.startswith("#"):  # Tərkibdə "#" olmayan sətirləri seç
-                # Linkin tam formasını götür (token də daxil olmaqla)
-                full_url = f""
-                # Multi-variant m3u8 formatına uyğun olaraq yazırıq
-                modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{full_url}\n"
-        
         # Faylı qovluğa yaz (üzərinə yaz)
         with open(file_path, "w", encoding="utf-8") as file:
-            file.write(modified_content)
-        print(f"m3u8 faylı uğurla yeniləndi: {file_path}")
+            file.write(m3u8_content)
+        
+        print(f"m3u8 faylı uğurla orijinal şəkildə saxlandı: {file_path}")
     except Exception as e:
         print(f"Xəta baş verdi: {e}")
 
