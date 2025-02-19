@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "http://raalbatros.serv00.net/Freeshot.php?ID=bein-sports-1-turkey/158",
+    "https://node19.connect.az:9081/tv/live/playlist.m3u8",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
