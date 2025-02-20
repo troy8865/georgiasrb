@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "https://node1-az-baku-delta.streamy.group/stream/jnpkys63gs5j2stnk8ati3seigcjctc6a9rkgqm5g9979u57f3ypdf9iq8a5ia8pk3rtxqnqs4czdqsni3rwb35xygqavk6nfxnawxsevphwwhprrzcdbsezs65q33sz8e6pynviahgccjak2hvbwbf24fet7dcv4qxthaee4qxu7pvwjjda====.m3u8",
+    "http://raalbatros.serv00.net/Freeshot.php?ID=bein-sports-1-turkey/158",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
