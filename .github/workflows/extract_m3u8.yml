@@ -2,7 +2,7 @@ name: Extract and Push m3u8 (Scheduled)
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # Hər 30 dəqiqədə bir işə düşür
+    - cron: '*/1 * * * *'  # Hər 1 saat bir işə düşür
   workflow_dispatch:        # Manual trigger da qalsın
 
 jobs:
