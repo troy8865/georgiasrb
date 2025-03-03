@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "http://raalbatros.serv00.net/Freeshot.php?ID=bein-sports-1-turkey/158",
+    "http://php-yayin-paylasim.ct.ws/DTH-Justin-V1.php",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
