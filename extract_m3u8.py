@@ -50,7 +50,7 @@ for line in channel_lines:
                 f.write("#EXT-X-TARGETDURATION:10\n")
                 f.write("#EXT-X-MEDIA-SEQUENCE:0\n")
                 # Kanal məlumatını əlavə et
-                f.write(f"#EXTINF:10.0,
+                f.write(f"#EXTINF:10.0,{channel_info['name']}\n")
                 f.write(f"{channel_info['url']}\n")
             print(f"{channel_info['name']} kanalı fayla yazıldı: {file_path}")
         except Exception as e:
