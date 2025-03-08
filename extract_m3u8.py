@@ -23,7 +23,7 @@ channel_info = {}
 
 for line in channel_lines:
     if line.startswith("#EXTINF:"):
-        # Kanal adını çıxar (fayl adı üçün istifadə olunacaq)
+        # Kanal adını çıxar
         channel_name = line.split(",")[-1].strip()
         # Fayl adında qadağan olunan simvolları təmizlə
         channel_name = channel_name.replace("/", "_").replace("\\", "_").replace(":", "_")
@@ -47,8 +47,10 @@ for line in channel_lines:
                 # M3U8 başlıqlarını əlavə et
                 f.write("#EXTM3U\n")
                 f.write("#EXT-X-VERSION:3\n")
-                f.write('#EXT-X-STREAM-INF:BANDWIDTH=2988667,CODECS="avc1.42c01f,mp4a.40.2",RESOLUTION=1920x1080\n')
-                # Kanal URL-ni əlavə et
+                f.write("#EXT-X-TARGETDURATION:10\n")
+                f.write("#EXT-X-MEDIA-SEQUENCE:0\n")
+                # Kanal məlumatını əlavə et
+                f.write(f"#EXTINF:10.0,
                 f.write(f"{channel_info['url']}\n")
             print(f"{channel_info['name']} kanalı fayla yazıldı: {file_path}")
         except Exception as e:
