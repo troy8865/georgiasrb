@@ -39,7 +39,13 @@ for line in channel_lines:
         # Fayl yarad və yaz
         try:
             with open(file_path, "w", encoding="utf-8") as f:
-                f.write(f"#EXTINF:-1,{channel_info['name']}\n")
+                # M3U8 başlıqlarını əlavə et
+                f.write("#EXTM3U\n")
+                f.write("#EXT-X-VERSION:3\n")
+                f.write("#EXT-X-TARGETDURATION:10\n")
+                f.write("#EXT-X-MEDIA-SEQUENCE:0\n")
+                # Kanal məlumatını əlavə et
+                f.write(f"#EXTINF:10.0,{channel_info['name']}\n")
                 f.write(f"{channel_info['url']}\n")
             print(f"{channel_info['name']} kanalı fayla yazıldı: {file_path}")
         except Exception as e:
