@@ -1,2 +1,6 @@
-#EXTINF:-1,89. Матч! Игра
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,89. Матч! Игра
 http://185.50.148.2:7708/Igra/index.m3u8

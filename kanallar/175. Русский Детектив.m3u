@@ -1,2 +1,6 @@
-#EXTINF:-1,175. Русский Детектив
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,175. Русский Детектив
 http://185.50.148.2:7706/rus_detektiv/index.m3u8

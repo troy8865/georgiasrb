@@ -1,2 +1,6 @@
-#EXTINF:-1,87. Матч! Арена
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,87. Матч! Арена
 http://185.50.148.2:7708/Arena/index.m3u8

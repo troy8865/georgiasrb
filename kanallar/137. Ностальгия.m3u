@@ -1,2 +1,6 @@
-#EXTINF:-1,137. Ностальгия
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,137. Ностальгия
 http://185.50.148.2:7711/Nostalgiya/index.m3u8

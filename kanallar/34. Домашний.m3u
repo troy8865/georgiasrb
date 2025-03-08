@@ -1,2 +1,6 @@
-#EXTINF:-1,34. Домашний
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,34. Домашний
 http://185.50.148.2:7702/Domashniy/index.m3u8

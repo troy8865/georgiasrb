@@ -1,2 +1,6 @@
-#EXTINF:-1,29. НТВ Сериал
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,29. НТВ Сериал
 http://185.50.148.2:7706/ntv_serial/index.m3u8

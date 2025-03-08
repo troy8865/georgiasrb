@@ -1,2 +1,6 @@
-#EXTINF:-1,56. Amedia Premium HD (SD)
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,56. Amedia Premium HD (SD)
 http://185.50.148.2:7707/AmediaPremium/index.m3u8
