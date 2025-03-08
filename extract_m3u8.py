@@ -29,8 +29,13 @@ for line in channel_lines:
         channel_name = channel_name.replace("/", "_").replace("\\", "_").replace(":", "_")
         channel_info["name"] = channel_name
     elif line.startswith("http"):
-        # Kanal URL-ni çıxar
-        channel_info["url"] = line.strip()
+        # Kanal URL-ni çıxar və /index.m3u8 və ya /index hissəsini sil
+        channel_url = line.strip()
+        if channel_url.endswith("/index.m3u8"):
+            channel_url = channel_url[:-11]  # Remove the last 11 characters (/index.m3u8)
+        elif channel_url.endswith("/index"):
+            channel_url = channel_url[:-6]  # Remove the last 6 characters (/index)
+        channel_info["url"] = channel_url
         
         # Fayl adını təyin et
         file_name = f"{channel_info['name']}.m3u"
