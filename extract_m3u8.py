@@ -25,6 +25,8 @@ for line in channel_lines:
     if line.startswith("#EXTINF:"):
         # Kanal adını çıxar
         channel_name = line.split(",")[-1].strip()
+        # Fayl adında qadağan olunan simvolları təmizlə
+        channel_name = channel_name.replace("/", "_").replace("\\", "_").replace(":", "_")
         channel_info["name"] = channel_name
     elif line.startswith("http"):
         # Kanal URL-ni çıxar
@@ -35,10 +37,12 @@ for line in channel_lines:
         file_path = os.path.join(output_folder, file_name)
         
         # Fayl yarad və yaz
-        with open(file_path, "w", encoding="utf-8") as f:
-            f.write(f"#EXTINF:-1,{channel_info['name']}\n")
-            f.write(f"{channel_info['url']}\n")
-        
-        print(f"{channel_info['name']} kanalı fayla yazıldı: {file_path}")
+        try:
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(f"#EXTINF:-1,{channel_info['name']}\n")
+                f.write(f"{channel_info['url']}\n")
+            print(f"{channel_info['name']} kanalı fayla yazıldı: {file_path}")
+        except Exception as e:
+            print(f"Xəta: {channel_info['name']} kanalı fayla yazıla bilmədi: {e}")
 else:
     print("Bütün kanallar uğurla yazıldı.")
