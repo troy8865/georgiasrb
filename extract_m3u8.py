@@ -1,13 +1,17 @@
 import requests
 import os
+import shutil
 
 # M3U faylının URL-i
 url = "http://185.50.148.2:88/stalker_portal/server/tools/m3u.php"
 
 # Faylın yadda saxlanacağı qovluq
 output_folder = "kanallar"
-if not os.path.exists(output_folder):
-    os.makedirs(output_folder)
+
+# Köhnə qovluğu sil və yenidən yarat
+if os.path.exists(output_folder):
+    shutil.rmtree(output_folder)
+os.makedirs(output_folder)
 
 # M3U faylını yüklə
 response = requests.get(url)
@@ -55,5 +59,5 @@ for line in channel_lines:
             print(f"{channel_info['name']} kanalı fayla yazıldı: {file_path}")
         except Exception as e:
             print(f"Xəta: {channel_info['name']} kanalı fayla yazıla bilmədi: {e}")
-else:
-    print("Bütün kanallar uğurla yazıldı.")
+
+print("Bütün kanallar uğurla yazıldı.")
