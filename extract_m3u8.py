@@ -3,7 +3,7 @@ import os
 import shutil
 
 # M3U faylının URL-i
-url = "http://185.50.148.2:88/stalker_portal/server/tools/m3u.php"
+url = "https://xittv.net/dom-kino-premium.html"
 
 # Faylın yadda saxlanacağı qovluq
 output_folder = "kanallar"
