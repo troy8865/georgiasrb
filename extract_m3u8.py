@@ -3,7 +3,7 @@ import os
 import shutil
 
 # M3U faylının URL-i
-url = "https://xittv.net/dom-kino-premium.html"
+url = "https://www.elahmad.com/tv/sunnatv.php"
 
 # Faylın yadda saxlanacağı qovluq
 output_folder = "kanallar"
