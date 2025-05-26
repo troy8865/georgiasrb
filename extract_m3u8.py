@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "http://raalbatros.serv00.net/Freeshot.php?ID=bein-sports-1-turkey/158",
+    "https://uzunmuhalefet.serv00.net/canlitv2.php?id=12969&.m3u8",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
