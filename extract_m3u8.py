@@ -1,88 +1,100 @@
 import os
 import re
 import requests
-from urllib.parse import urljoin
 import sys
+from pathlib import Path
 
-# Qaynaq linkləri
-source_urls = [
-    "https://www.teve2.com.tr/canli-yayin",
-]
+# 1. TƏYİNLƏMƏLƏR
+SOURCE_URLS = ["https://www.teve2.com.tr/canli-yayin"]
+OUTPUT_FOLDER = Path(__file__).parent / "output"
+OUTPUT_FOLDER.mkdir(exist_ok=True, parents=True)  # Avtomatik qovluq yaradır
 
-# Faylın yadda saxlanacağı qovluq (tam yol ilə)
-script_dir = os.path.dirname(os.path.abspath(__file__))
-output_folder = os.path.join(script_dir, "output")
+# 2. USER-Agent və HTTP HEADERS
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+}
 
-# Qovluğu yaratmaq üçün funksiya
-def create_output_folder():
+def debug_print(message):
+    """Xəta ayıklama üçün formatlı çıxış"""
+    print(f"[DEBUG] {message}", file=sys.stderr)
+
+def verify_folder_access():
+    """Qovluq icazələrini yoxlayır"""
+    test_file = OUTPUT_FOLDER / "access_test.txt"
     try:
-        os.makedirs(output_folder, exist_ok=True)
-        print(f"Qovluq yaradıldı/yoxlanıldı: {output_folder}")
-        
-        # İcazə testi
-        test_file = os.path.join(output_folder, "permission_test.txt")
-        with open(test_file, "w") as f:
+        with open(test_file, 'w') as f:
             f.write("test")
         os.remove(test_file)
         return True
     except Exception as e:
-        print(f"Qovluq yaradıla/xidmət edilə bilmir: {e}")
+        debug_print(f"Qovluq icazə xətası: {e}")
         return False
 
 def extract_m3u8(url, index):
     try:
-        print(f"\n{url} üçün emal başladı...")
+        debug_print(f"URL üçün emal başladı: {url}")
         
-        # 1. Saytın HTML məzmununu əldə et
-        response = requests.get(url, headers={
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-        }, timeout=10)
+        # 1. HTML məzmununun alınması
+        response = requests.get(url, headers=HEADERS, timeout=15)
         response.raise_for_status()
         
-        # 2. m3u8 linkini tap
-        m3u8_matches = re.findall(r'(https?://[^\s"\']+\.m3u8(?:\?[^\s"\']*)?)', response.text)
+        # 2. m3u8 linkinin tapılması (daha dəqiq regex)
+        m3u8_urls = re.findall(
+            r'https?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+\.m3u8(?:\?[^\s"\']+)?',
+            response.text
+        )
         
-        if not m3u8_matches:
-            raise Exception("Xəta: m3u8 linki tapılmadı")
+        if not m3u8_urls:
+            raise ValueError("m3u8 linki tapılmadı")
         
-        m3u8_url = m3u8_matches[0]
-        print(f"Tapılan m3u8 linki: {m3u8_url}")
+        m3u8_url = m3u8_urls[0]
+        debug_print(f"Tapılan m3u8 linki: {m3u8_url}")
         
-        # 3. m3u8 faylını yüklə
-        m3u8_response = requests.get(m3u8_url, headers=headers, timeout=10)
+        # 3. m3u8 faylının yüklənməsi
+        m3u8_response = requests.get(m3u8_url, headers=HEADERS, timeout=15)
         m3u8_response.raise_for_status()
         
-        # 4. Fayl adı və yolu
+        # 4. Faylın yazılması
         filename = f"stream_{index}.m3u8"
-        file_path = os.path.join(output_folder, filename)
+        file_path = OUTPUT_FOLDER / filename
         
-        print(f"Fayl yola yazılır: {file_path}")
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(m3u8_response.text)
         
-        # 5. Faylın tam məzmununu yaz
-        with open(file_path, "w", encoding="utf-8") as file:
-            file.write(m3u8_response.text)
+        # 5. Yazılan faylın yoxlanılması
+        if not file_path.exists():
+            raise IOError("Fayl yaradıla bilmədi")
         
-        # Yazıldığını yoxla
-        if os.path.exists(file_path):
-            print(f"Uğurla yadda saxlanıldı: {filename} (Ölçü: {os.path.getsize(file_path)} bayt)")
-        else:
-            raise Exception("Fayl yaradıla bilmədi!")
-        
-        return m3u8_url
+        debug_print(f"Fayl uğurla yaradıldı: {file_path} (Ölçü: {file_path.stat().st_size} bayt)")
+        return str(m3u8_url)
         
     except Exception as e:
-        print(f"Xəta baş verdi: {str(e)}", file=sys.stderr)
+        debug_print(f"Xəta: {type(e).__name__}: {str(e)}")
         return None
 
-if __name__ == "__main__":
-    if not create_output_folder():
-        print("Xəta: Çıxış qovluğu problemli, skript dayandırılır...", file=sys.stderr)
+def main():
+    # Qovluq icazələrini yoxlama
+    if not verify_folder_access():
+        print("Xəta: Qovluğa yazma icazəsi yoxdur!", file=sys.stderr)
         sys.exit(1)
     
-    for index, url in enumerate(source_urls):
-        if url:
-            m3u8_url = extract_m3u8(url, index)
-            if m3u8_url:
-                print(f"Emal uğurla başa çatdı! Əsas m3u8 linki: {m3u8_url}")
-            else:
-                print(f"Xəta: {url} üçün emal uğursuz oldu", file=sys.stderr)
+    print(f"Çıxış qovluğu: {OUTPUT_FOLDER.absolute()}")
+    
+    # Hər bir URL üçün emal
+    for idx, url in enumerate(SOURCE_URLS):
+        print(f"\n{idx+1}. URL emal edilir: {url}")
+        result = extract_m3u8(url, idx)
+        
+        if result:
+            print(f"Uğur! m3u8 linki: {result}")
+        else:
+            print(f"Xəta: {url} emal edilə bilmədi", file=sys.stderr)
+    
+    # Əməliyyatın yekunlaşdırılması
+    print("\nƏməliyyat başa çatdı. Fayllar:")
+    for f in OUTPUT_FOLDER.glob("*.m3u8"):
+        print(f"- {f.name} ({f.stat().st_size} bayt)")
+
+if __name__ == "__main__":
+    main()
