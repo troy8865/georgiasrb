@@ -1,32 +1,40 @@
 import os
 import re
+import time
 import requests
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
-# Qaynaq linkləri
-source_urls = [
-    "https://www.teve2.com.tr/canli-yayin",
-]
-
-# Qovluğu yaradın
+# Qovluq yaradılır
 output_folder = "output"
 os.makedirs(output_folder, exist_ok=True)
 
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36"
-}
-
-def extract_m3u8(url, index):
+# M3U8 linki çıxaran funksiya
+def extract_m3u8_with_selenium(url, index):
     try:
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-        html = response.text
+        # Chrome parametrləri
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")  # Brauzeri gizli açır
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--no-sandbox")
+
+        # WebDriver başlanır
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+        driver.get(url)
+
+        time.sleep(5)  # Saytın tam yüklənməsi üçün gözləmə
+
+        page_source = driver.page_source
+        driver.quit()
 
         # Tokenli m3u8 linki tap
-        match = re.search(r'https://[^"]+\.m3u8\?token=[^"]+', html)
+        match = re.search(r'https://[^"]+\.m3u8\?token=[^"]+', page_source)
         if not match:
             print("❌ Tokenli .m3u8 link tapılmadı.")
             with open(os.path.join(output_folder, f"debug_{index}.html"), "w", encoding="utf-8") as f:
-                f.write(html)
+                f.write(page_source)
             return
 
         token_url = match.group(0)
@@ -38,6 +46,9 @@ def extract_m3u8(url, index):
         print(f"✅ Token linki saxlanıldı: {token_path}")
 
         # m3u8 faylını yüklə
+        headers = {
+            "User-Agent": "Mozilla/5.0"
+        }
         m3u8_response = requests.get(token_url, headers=headers)
         m3u8_response.raise_for_status()
         m3u8_lines = m3u8_response.text.splitlines()
@@ -59,7 +70,9 @@ def extract_m3u8(url, index):
     except Exception as e:
         print(f"❌ Xəta baş verdi: {e}")
 
+# Əsas hissə
 if __name__ == "__main__":
+    source_urls = ["https://www.teve2.com.tr/canli-yayin"]
     for index, url in enumerate(source_urls):
         if url:
-            extract_m3u8(url, index)
+            extract_m3u8_with_selenium(url, index)
