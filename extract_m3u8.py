@@ -5,7 +5,7 @@ from urllib.parse import urljoin
 
 # Qaynaq linkləri
 source_urls = [
-    "https://www.kanal7.com/canli-izle",
+    "https://www.teve2.com.tr/canli-yayin",
 ]
 
 # Faylın yadda saxlanacağı qovluq
