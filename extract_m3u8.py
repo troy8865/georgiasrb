@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "https://uzunmuhalefet.serv00.net/canlitv2.php?id=12969&.m3u8",
+    "https://www.teve2.com.tr/canli-yayin",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
@@ -36,7 +36,7 @@ def extract_m3u8(url, index):
         for line in m3u8_content:
             if line.strip() and not line.startswith("#"):  # Tərkibdə "#" olmayan sətirləri seç
                 # Linkin tam formasını götür (token də daxil olmaqla)
-                full_url = f"http://188.245.211.255:1935/canlitv/torbatv.stream/playlist.m3u8?/{line.strip()}"
+                full_url = f"https://demiroren.daioncdn.net/teve2/teve2_720p.m3u8?/{line.strip()}"
                 # Multi-variant m3u8 formatına uyğun olaraq yazırıq
                 modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{full_url}\n"
         
