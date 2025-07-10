@@ -31,7 +31,7 @@ jobs:
       # 4. Python skriptini işə sal
       - name: Run Python script
         run: |
-          python extract1_m3u8.py
+          python kinomiks.py
       
      # 5. Dəyişiklikləri yoxla
       - name: Check for changes
