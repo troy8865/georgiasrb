@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "https://www.teve2.com.tr/canli-yayin",
+    "http://158.101.222.193:88/georgia_play.php?id=kinohit",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
