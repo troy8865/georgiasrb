@@ -19,7 +19,7 @@ def extract0_m3u8(url, index):
         response.raise_for_status()  # Xəta yoxlanışı
         
         # Fayl adını index ilə fərqləndir
-        filename = f"stream_{index}.m3u8"
+        filename = f"kinohit{index}.m3u8"
         file_path = os.path.join(output_folder, filename)
         
         # Faylı oxu və içindəki nisbi linkləri tam URL-yə çevir
