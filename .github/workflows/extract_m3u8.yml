@@ -33,10 +33,6 @@ jobs:
         run: |
           python extract0_m3u8.py
           python extract1_m3u8.py
-          python extract2_m3u8.py
-          python extract3_m3u8.py
-          python extract3_m3u8.py
-          python extract4_m3u8.py
       # 5. Dəyişiklikləri yoxla
       - name: Check for changes
         id: changes
