@@ -4,6 +4,8 @@ import requests
 # Qaynaq linkləri
 source_urls = [
     "http://158.101.222.193:88/georgia_play.php?id=kinohit",
+    "http://158.101.222.193:88/georgia_play.php?id=kinomiks",
+    
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
