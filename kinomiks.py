@@ -12,7 +12,7 @@ output_folder = "output"
 os.makedirs(output_folder, exist_ok=True)
 
 # m3u8 faylını çıxar və qovluğa yadda saxla
-def extract1_m3u8(url, index):
+def kinomiks(url, index):
     try:
         # m3u8 faylını yüklə
         response = requests.get(url)
@@ -51,4 +51,4 @@ def extract1_m3u8(url, index):
 if __name__ == "__main__":
     for index, url in enumerate(source_urls):
         if url:  # Əgər URL boş deyilsə
-            extract1_m3u8(url, index)
+            kinomiks(url, index)
