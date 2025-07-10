@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "http://158.101.222.193:88/georgia_play.php?id=kinohit",
+    "http://158.101.222.193:88/georgia_play.php?id=kinomiks",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
@@ -36,7 +36,7 @@ def extract_m3u8(url, index):
         for line in m3u8_content:
             if line.strip() and not line.startswith("#"):  # Tərkibdə "#" olmayan sətirləri seç
                 # Linkin tam formasını götür (token də daxil olmaqla)
-                full_url = f"http://tbs01-edge17.itdc.ge/kinohit/{line.strip()}"
+                full_url = f"http://tbs01-edge17.itdc.ge/kinomiks/{line.strip()}"
                 # Multi-variant m3u8 formatına uyğun olaraq yazırıq
                 modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{full_url}\n"
         
