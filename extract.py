@@ -6,7 +6,7 @@ from urllib.parse import urlparse, parse_qs
 source_urls = [
     "http://158.101.222.193:88/georgia_play.php?id=kinohit",
     "http://158.101.222.193:88/georgia_play.php?id=kinomiks",
-    "http://158.101.222.193:88/georgia_play.php?id=rustavi2",
+    "http://158.101.222.193:88/georgia_play.php?id=marneulitv",
 ]
 
 # Faylların yazılacağı qovluq
