@@ -3,7 +3,7 @@ import requests
 
 # Qaynaq linkləri
 source_urls = [
-    "http://158.101.222.193:88/georgia_play.php?id=kinomiks",
+    "http://158.101.222.193:88/georgia_play.php?id=marneulitv",
     # Buraya digər m3u8 linklərini əlavə edin
 ]
 
@@ -12,14 +12,14 @@ output_folder = "output"
 os.makedirs(output_folder, exist_ok=True)
 
 # m3u8 faylını çıxar və qovluğa yadda saxla
-def kinomiks(url, index):
+def marneulitv(url, index):
     try:
         # m3u8 faylını yüklə
         response = requests.get(url)
         response.raise_for_status()  # Xəta yoxlanışı
         
         # Fayl adını index ilə fərqləndir
-        filename = f"kinomiks{index}.m3u8"
+        filename = f"marneulitv{index}.m3u8"
         file_path = os.path.join(output_folder, filename)
         
         # Faylı oxu və içindəki nisbi linkləri tam URL-yə çevir
@@ -36,7 +36,7 @@ def kinomiks(url, index):
         for line in m3u8_content:
             if line.strip() and not line.startswith("#"):  # Tərkibdə "#" olmayan sətirləri seç
                 # Linkin tam formasını götür (token də daxil olmaqla)
-                full_url = f"http://tbs01-edge17.itdc.ge/kinomiks/{line.strip()}"
+                full_url = f"http://tbs01-edge17.itdc.ge/marneulitv/{line.strip()}"
                 # Multi-variant m3u8 formatına uyğun olaraq yazırıq
                 modified_content += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{full_url}\n"
         
@@ -51,4 +51,4 @@ def kinomiks(url, index):
 if __name__ == "__main__":
     for index, url in enumerate(source_urls):
         if url:  # Əgər URL boş deyilsə
-            kinomiks(url, index)
+            marneulitv(url, index)
