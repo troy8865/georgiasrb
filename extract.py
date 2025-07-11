@@ -7,6 +7,15 @@ source_urls = [
     "http://158.101.222.193:88/georgia_play.php?id=kinohit",
     "http://158.101.222.193:88/georgia_play.php?id=kinomiks",
     "http://158.101.222.193:88/georgia_play.php?id=marneulitv",
+    "http://158.101.222.193:88/georgia_play.php?id=fenikspluskino",
+    "http://158.101.222.193:88/georgia_play.php?id=24techno",
+    "http://158.101.222.193:88/georgia_play.php?id=365day",
+    "http://158.101.222.193:88/georgia_play.php?id=amedia2",
+    "http://158.101.222.193:88/georgia_play.php?id=amediahit",
+    "http://158.101.222.193:88/georgia_play.php?id=amediapremium",
+    "http://158.101.222.193:88/georgia_play.php?id=auto24",
+    "http://158.101.222.193:88/georgia_play.php?id=kinoujas",
+    
 ]
 
 # Faylların yazılacağı qovluq
