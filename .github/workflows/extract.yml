@@ -2,7 +2,7 @@ name: Extract M3U8 Links
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # Hər 30 dəqiqədən bir
+    - cron: '*/180 * * * *'  # Hər 180 dəqiqədən bir
   workflow_dispatch:
 
 jobs:
