@@ -1,49 +1,41 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-import time
-import re
 import os
+import requests
+from urllib.parse import urlparse, parse_qs
 
-# Kanal siyahısı (id = fayl adı olacaq)
-kanallar = {
-    "showtv": "https://www.showtv.com.tr/canli-yayin",
-    "nowtv": "https://www.nowtv.com.tr/canli-yayin"
-}
+# Qaynaq linkləri (istədiyin qədər əlavə edə bilərsən)
+source_urls = [
+    "http://158.101.222.193:88/georgia_play.php?id=kinohit",
+    "http://158.101.222.193:88/georgia_play.php?id=kinomiks",
+    "http://158.101.222.193:88/georgia_play.php?id=rustavi2",
+]
 
-# Headless Chrome browser qur
-options = Options()
-options.add_argument("--headless=new")
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.binary_location = "/usr/bin/google-chrome"
-options.add_argument("--user-agent=Mozilla/5.0 (Linux; Android 10) Chrome/115.0 Mobile Safari/537.36")
+# Faylların yazılacağı qovluq
+output_folder = "output"
+os.makedirs(output_folder, exist_ok=True)
 
-driver = webdriver.Chrome(options=options)
-
-os.makedirs("stream", exist_ok=True)
-
-for ad, url in kanallar.items():
+def extract_m3u8(url):
     try:
-        driver.get(url)
-        time.sleep(5)
-        source = driver.page_source
+        kanal_adi = parse_qs(urlparse(url).query).get("id", ["stream"])[0]
+        filename = f"{kanal_adi}.m3u8"
+        file_path = os.path.join(output_folder, filename)
 
-        # ercdn.net linkləri axtarılır (480p)
-        match = re.search(r'https://.*?nowtv.*?\.m3u8\?[^\'"\\\s]+', source)
-        if match:
-            m3u8_link = match.group(0)
-            print(f"[✅] {ad} tapıldı:", m3u8_link)
+        response = requests.get(url)
+        response.raise_for_status()
+        lines = response.text.splitlines()
 
-            # Fayl yazılır
-            fayl_yolu = f"stream/{ad}.m3u8"
-            with open(fayl_yolu, "w") as f:
-                f.write("#EXTM3U\n")
-                f.write("#EXT-X-VERSION:3\n")
-                f.write("#EXT-X-STREAM-INF:BANDWIDTH=800000,RESOLUTION=854x480\n")
-                f.write(m3u8_link + "\n")
-        else:
-            print(f"[❌] {ad} üçün link tapılmadı.")
+        modified = "#EXTM3U\n#EXT-X-VERSION:3\n"
+        for line in lines:
+            if line.strip() and not line.startswith("#"):
+                full_url = f"http://tbs01-edge17.itdc.ge/{kanal_adi}/{line.strip()}"
+                modified += f"#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720\n{full_url}\n"
+
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.write(modified)
+
+        print(f"✅ {filename} yaradıldı.")
     except Exception as e:
-        print(f"[🔥] {ad} üçün xəta: {e}")
+        print(f"❌ {url} üçün xəta: {e}")
 
-driver.quit()
+if __name__ == "__main__":
+    for url in source_urls:
+        extract_m3u8(url)
