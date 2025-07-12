@@ -15,7 +15,7 @@ source_urls = [
     "http://158.101.222.193:88/georgia_play.php?id=amediapremium",
     "http://158.101.222.193:88/georgia_play.php?id=auto24",
     "http://158.101.222.193:88/georgia_play.php?id=kinoujas",
-    
+    "http://158.101.222.193:88/georgia_play.php?id=amedia",
 ]
 
 # Faylların yazılacağı qovluq
