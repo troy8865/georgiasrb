@@ -1,6 +1,6 @@
 ---
 
-# 🚫📡📢 KANALLARIN HAZIRLANMASI (BY MASTER) 📢📡🚫
+# 📢 KANALLARIN HAZIRLANMASI (BY MASTER) 📢
 
 ❗ **Bu sistemdəki bütün kanalların hazırlanması və avtomatik işləməsi `BY_MASTER` tərəfindən tərtib edilmişdir.**
 
