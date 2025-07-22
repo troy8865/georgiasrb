@@ -26,6 +26,7 @@ source_urls = [
     "http://158.101.222.193:88/georgia_play.php?id=kinoseria",
     "http://158.101.222.193:88/georgia_play.php?id=kinosvidanie",
     "http://158.101.222.193:88/georgia_play.php?id=black",
+    "http://158.101.222.193:88/georgia_play.php?id=nashanovoekino",
 
 ]
 
