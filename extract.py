@@ -4,11 +4,11 @@ from urllib.parse import urlparse, parse_qs
 
 # Qaynaq linkləri (istədiyin qədər əlavə edə bilərsən)
 source_urls = [
-"http://158.101.222.193:88/georgia_play.php?id=ssc1",
-"http://158.101.222.193:88/georgia_play.php?id=ssc2",
-"http://158.101.222.193:88/georgia_play.php?id=ssc3",
-"http://158.101.222.193:88/georgia_play.php?id=ssc4",
-"http://158.101.222.193:88/georgia_play.php?id=ssc5",
+"http://158.101.222.193:88/georgia_play.php?id=24techno",
+"http://158.101.222.193:88/georgia_play.php?id=365day",
+"http://158.101.222.193:88/georgia_play.php?id=abkhaz",
+"http://158.101.222.193:88/georgia_play.php?id=adjara",
+"http://158.101.222.193:88/georgia_play.php?id=agrotv",
 "http://158.101.222.193:88/georgia_play.php?id=amedia",
 "http://158.101.222.193:88/georgia_play.php?id=amedia2",
 "http://158.101.222.193:88/georgia_play.php?id=amediahit",
