@@ -1,2 +1,4 @@
 #EXTM3U
 #EXT-X-VERSION:3
+#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720
+http://tbs01-edge17.itdc.ge/kinosemya/tracks-v1a1/mono.m3u8?token=8O1H_no2aarUuPbAj9I23-BoNluaknUsBzfI1vT1u4zCIpgc6WGxluDJ9CjdzvlVNVjKRKSa8otYb8lJRrVcwQx8C4B_w_psEXMzbnsiI8D2WuQst7TWgplDemvwq_FAyr0Sv1t2QKyxMXJuK5hoGxU1IOFfc95nfImziQxOg9l1NRodKd9ZFjVKOohtaKA9_d21ksN97fZcw6BVI29VtncNZuT2AfxckdzIA88lKgIs-EmuTKdnKM0oCYcjoL_rN4IENGq5b0IKuUivv6lwZw%2A%2A
