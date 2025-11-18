@@ -1,2 +1,4 @@
 #EXTM3U
 #EXT-X-VERSION:3
+#EXT-X-STREAM-INF:BANDWIDTH=2085600,RESOLUTION=1280x720
+http://tbs01-edge17.itdc.ge/rioni2/tracks-v1a1/mono.m3u8?token=Q5zOAeEwv37ok7KUvKEY4kKn9ykoz3rnfK1tUUL6fLifaoFplf_f2--zPxJoomk0Flxcb8m-e-U519uYX-54pSscKy4cZPF4mdfhKq1JhOFCGiFXpx99O4cTtuTOZeX9Elkx-PBx02OnrCoNMXDZLBdaFSGCkmzrQiLf0arESZftdd6c5knWrJ2Itjpu0czpnXsb2i0WXKVRE4yE3HjztdU6gM-38bbKm88HsRglOxFJPvUCLrwTtdTbsiwPOVJU
