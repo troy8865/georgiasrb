@@ -1,12 +1,11 @@
 name: Update M3U
 
-# Workflow tetiklenme koşulları
 on:
-  push:
-    branches:
-      - main
+  # Elle tetikleme
+  workflow_dispatch:
+
+  # Otomatik tetikleme (her saat başı, UTC)
   schedule:
-    # Her saat başı çalıştır (UTC)
     - cron: '0 * * * *'
 
 jobs:
